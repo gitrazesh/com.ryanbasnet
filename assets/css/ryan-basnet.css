@@ -2,7 +2,7 @@
 * @Author: Rajesh Basnet
 * @Date:   2016-05-20 12:52:34
 * @Last Modified by:   Rajesh Basnet
-* @Last Modified time: 2016-05-20 14:37:15
+* @Last Modified time: 2016-05-20 16:47:50
 */
 
 
@@ -40,11 +40,85 @@
 
 .navbar{
 
-		border:1px green solid;
+		border: none;
 		background-color: transparent;
-		
-	
+
 	}
+
+
+	.navbar-brand{
+		
+		padding:10px 15px;
+
+	}
+
+	.navbar .navbar-toggle{
+		background-color:transparent;
+		padding: 0;
+		border:none;
+	}
+
+	.navbar .navbar-toggle .icon-bar{
+		width:35px;
+		background-color: #fff;
+		margin-bottom:7px;
+		
+	}
+
+	
+	.navbar-default .navbar-nav{
+		/*border:1px green solid;*/
+		position: absolute;
+		right: 30px;
+		bottom: -10px;
+		font-size: 13pt;
+		letter-spacing: 1.5px;
+	}
+
+
+	.navbar-default .navbar-nav li{
+         
+          padding:5px 15px;
+
+         }
+	
+	.navbar-default .navbar-nav>li>a {
+		color:white;
+	}
+
+
+	.navbar-default .navbar-nav>li>a:hover{
+            color:white;
+          }
+
+
+	.navbar-default .navbar-nav>li>a:before {
+
+         content: "";
+         position: absolute;
+         width: 100%;
+         height: 2px;
+         bottom: 0;
+         left: 0;
+         background-color: #fff;
+         visibility: hidden;
+         -webkit-transform: scaleX(0);
+         transform: scaleX(0);
+         -webkit-transition: all 0.3s ease-in-out 0s;
+         transition: all 0.3s ease-in-out 0s;
+
+        }
+
+
+    .navbar-default .navbar-nav>li>a:hover:before {
+
+		 visibility: visible;
+		 -webkit-transform: scaleX(1);
+		 transform: scaleX(1);
+
+		}
+
+
 	
 /* ----------------------------------------*/
 /* ---------->>> PAGE LAYOUTS <<<----------*/
@@ -68,18 +142,28 @@
 /* ---------->>> MEDIA QUERIES <<<----------------*/
 /* ----------------------------------------*/
 
-@import url("normalise.css");
-
 /* Custom, iPhone Retina */ 
 @media only screen and (min-width : 320px) {
-	.navbar-brand{
-		padding:5px 10px;
-	}
+	
+	
+
 
 	#logo{
 
 		width: 80px;
 		height: 40px;
+
+	}
+
+	.navbar .navbar-toggle{
+		background-color:transparent;
+		margin:15px 10px;
+		border:none;
+	}
+
+	.navbar .navbar-toggle .icon-bar{
+		
+		
 		
 	}
 
@@ -90,22 +174,33 @@
 
 	.navbar{
 	
-		height: 90px;
+		height: 80px;
 		
 	}
 
-	.navbar-brand{
-		padding:15px;
-	}
 
 
 	#logo{
 
 		height:60px;
 		width: 120px;
-		border: 1px black solid;
 
 	}
+
+	.navbar .navbar-toggle{
+		background-color:transparent;
+		margin:20px 10px;
+		border:none;
+	}
+
+	.navbar .navbar-toggle .icon-bar{
+
+		margin-bottom:7px;
+		
+	}
+	
+
+
 }
 
 /* Small Devices, Tablets */

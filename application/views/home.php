@@ -33,15 +33,25 @@
 	<!-- Navigation -->
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#my-nav">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#my-nav">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
 
-			<!-- Logo -->
-			<a class="navbar-brand" href=""><img id="logo" src="<?php base_url()?>assets/images/ryan_basnet_logo.png" alt="Ryan Basnet"></a>
+				<!-- Logo -->
+				<a class="navbar-brand" href=""><img id="logo" src="<?php base_url()?>assets/images/ryan_basnet_logo.png" alt="Ryan Basnet"></a>
+			</div>
+
+			 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      			<ul class="nav navbar-nav navbar-right">
+					<li><a href="">About</a></li>
+					<li><a href="">Work</a></li>
+					<li><a href="">Contact</a></li>
+				</ul>
+			</div>
 		</div>
 	</nav>
 	
