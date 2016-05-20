@@ -20,16 +20,36 @@
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<!-- Master css -->
 	<link rel="stylesheet" href="<?php echo base_url()?>assets/css/ryan-basnet.css">
+	
+
+	<!-- Testing style sheet -->
+	<style>
+
+	</style>
 </head>
 
 <body>
-	
+
 	<!-- Navigation -->
 	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#my-nav">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
 
+			<!-- Logo -->
+			<a class="navbar-brand" href=""><img id="logo" src="<?php base_url()?>assets/images/ryan_basnet_logo.png" alt="Ryan Basnet"></a>
+		</div>
 	</nav>
-
-	<h1 style="margin-top:65px;">Hello test page </h1>
+	
+	<!-- Full view port size jumbotron -->
+	<div class="jumbotron">
+		<div class="container">
+		</div>
+	</div> <!-- End of jumbotron -->
 
 
 
