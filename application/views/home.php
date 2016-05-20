@@ -14,6 +14,8 @@
 	<script   src="https://code.jquery.com/jquery-2.2.3.min.js" ></script>
 	<!-- Bootstrap js -->
 	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<!-- Web fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Ubuntu:400,500,700' rel='stylesheet' type='text/css'>
 	<!-- FontAwesome CDN -->
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 	<!-- Bootstrap css -->
