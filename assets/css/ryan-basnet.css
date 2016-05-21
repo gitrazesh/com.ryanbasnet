@@ -2,7 +2,7 @@
 * @Author: Rajesh Basnet
 * @Date:   2016-05-20 12:52:34
 * @Last Modified by:   Rajesh Basnet
-* @Last Modified time: 2016-05-21 18:40:46
+* @Last Modified time: 2016-05-21 22:42:50
 */
 
 
@@ -29,12 +29,35 @@
 
 .page-header{
 	border:none;
+	text-align: center;
+	
 }
 .page-subheader{
 	text-align: center;
 	padding:10px 0px;
 }
 
+ h2:after,
+ h2:before{
+	content: "";
+	position: relative;
+	bottom:15px;
+	display: inline-block;
+	vertical-align: center;
+	background-color:#6E6F71;
+	width: 200px;
+	height: 3px;
+
+}
+h2:after{
+
+	margin-left: 20px;
+}
+
+ h2:before{
+
+	margin-right: 20px;
+}
 
 /* ------------------------------------------*/
 /* ---------->>> HEADINGS <<<----------------*/
@@ -46,15 +69,17 @@
 		font-size: 53px;
 		font-weight: 600;
 		line-height: 60px;
+		display: inline-block;
 	}
 
 	h3{
 		
 		color:#485868;
-		font-size: 43px;
+		font-size: 33px;
 		font-weight: 600;
-		line-height: 50px;
+		line-height: 40px;
 	}
+
 
 /* -----------------------------------------*/
 /* ---------->>> NAVIGATION <<<-------------*/
@@ -65,9 +90,15 @@
 
 		border: none;
 		background-color: transparent;
+		transition: background-color 2s ease-in-out;
 
 	}
 
+.navbar-overlay{
+
+	background-color: #353E3D;
+
+}
 
 	.navbar-brand{
 		
@@ -148,7 +179,16 @@
 
 		}
 
+/* -----------------------------------------*/
+/* ---------->>> FOOTER <<<----------------*/
+/* ----------------------------------------*/
 
+.cr-banner{
+	height: 35px;
+	background-color:#353E3D;
+	text-align: center;
+	color: #fff;
+}
 	
 /* ----------------------------------------*/
 /* ---------->>> PAGE LAYOUTS <<<----------*/
@@ -260,10 +300,22 @@
 	.content{
 
 		color:#6E6F71;
-		font-size: 21px;
+		font-size: 18px;
 		line-height:30px;
 		font-weight: 500;
 		text-align:center;
+		letter-spacing: .5px;
+	}
+
+	.skill-chart{
+		padding:20px;
+		text-align: center;
+	}
+
+	.skill-list li{
+		list-style-type: none;
+		display: inline-block;
+		padding:5px 20px;
 	}
 	
 
@@ -333,6 +385,19 @@
 		
 	}
 
+	.panel-default {
+		
+		border:none;
+	}
+
+	.panel-default .panel-footer{
+
+	border:transparent;
+	background-color: transparent;
+}
+.panel-default .panel-footer .btn{
+	width: 120px;
+}
 	
 
 

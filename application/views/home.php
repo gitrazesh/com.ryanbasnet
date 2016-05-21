@@ -106,27 +106,118 @@
 
 	<!-- About section -->
 	<div class="container about">
-		<div class="page-header">
-		<h2>Who Am I</h2></div>
-		<div class="img-wrapper">
-			<img class="profile-img img-circle" src="<?php echo base_url()?>assets/images/profile_img.jpg" alt="">
-		</div>
-		<div class="row">
-			<div class="col-sm-3"></div>
-			<div class="col-sm-6 content">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta optio nobis atque harum, quisquam. Corrupti atque modi itaque totam dolorum enim minus quidem mollitia inventore, illo autem dele. 
+		<article>
+			<div class="page-header">
+				<h2 style="">Who Am I</h2>
 			</div>
-			<div class="col-sm-3"></div>
-		</div>
+			<div class="img-wrapper">
+				<img class="profile-img img-circle" src="<?php echo base_url()?>assets/images/profile_img.jpg" alt="">
+			</div>
+			<div class="row">
+				<div class="col-sm-3"></div>
+				<div class="col-sm-6 content">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta optio nobis atque harum, quisquam. Corrupti atque modi itaque totam dolorum enim minus quidem mollitia inventore, illo autem dele. 
+				</div>
+				<div class="col-sm-3"></div>
+			</div>
+		</article>
 		<div class="page-subheader"><h3>I'm Good At</h3></div>
 		<div class="row">
-			<div class="col-sm-3"></div>
-			<div class="col-sm-6"></div>
-			<div class="col-sm-3"></div>
+			<!-- <div class="col-sm-3"></div> -->
+			<div class="col-sm-12">
+				<div class="skill-chart">
+					<ul class="skill-list">
+						<li> <!-- HTML -->
+							<div class="panel panel-default">
+								<div class="panel-body">
+									<div class="html" data-percent="70"></div>
+								</div>
+								<div class="panel-footer">
+									<button class="btn btn-primary" type="button">HTML & CSS</button></div>
+							</div>
+						</li>
+						<li> <!-- js -->
+							<div class="panel panel-default">
+								<div class="panel-body">
+									<div class="html" data-percent="60"></div>
+								</div>
+								<div class="panel-footer">
+									<button class="btn btn-warning" type="button">Javascript</button></div>
+							</div>
+						</li>
+						<li> <!-- php -->
+							<div class="panel panel-default">
+								<div class="panel-body">
+									<div class="php" data-percent="65"></div>
+								</div>
+								<div class="panel-footer">
+									<button class="btn btn-danger" type="button">PHP</button></div>
+							</div>
+						</li>
+						<li> <!-- java -->
+							<div class="panel panel-default">
+								<div class="panel-body">
+									<div class="java" data-percent="65"></div>
+								</div>
+								<div class="panel-footer">
+									<button class="btn btn-success" type="button">Java</button></div>
+							</div>
+						</li>
+						<li> <!-- c-sharp -->
+							<div class="panel panel-default">
+								<div class="panel-body">
+									<div class="c-sharp" data-percent="60"></div>
+								</div>
+								<div class="panel-footer">
+									<button class="btn btn-danger" type="button">C#</button></div>
+							</div>
+						</li>
+			
+					</ul>
+			</div>
+
+			</div>
+			<!-- <div class="col-sm-3"></div> -->
 		</div>
+		<div class="page-subheader"><h3>How Can I Help</h3></div>
+		<div class="row">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-6 content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quod dolorem, laborum hic et? Error, placeat pariatur</div>
+			<div class="col-sm-3"></div>
+
+		</div>
+		<br>
+		<br>
+		<br>
+		<br>
+	</div>
+
+	<!-- Work section -->
+	<div class="container">	
+		<div class="page-header"><h2>Work</h2></div>
+
+
+
 	</div>
 
 
+	<!-- Contact section -->
+	<div class="container">	
+		<div class="page-header"><h2>Contact</h2></div>
+
+
+
+	</div>
+
+	<!-- Footer -->
+
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="cr-banner"><small>&copy 2016 ryan</small></div>
+			</div>
+		</div>
+	</footer>
 
 
 
@@ -140,6 +231,90 @@
 
 
 
+
+<script>	
+
+
+
+$(document).ready(function(){
+
+
+function init() {
+
+    window.addEventListener('scroll', function(e){
+        var distanceY = window.pageYOffset || document.documentElement.scrollTop,
+            shrinkOn = 180,
+            header = document.querySelector("header");
+        if (distanceY > shrinkOn) {
+            $(".navbar-default").addClass("navbar-overlay");
+        } else {
+             $(".navbar-default").removeClass("navbar-overlay");
+        }
+    });
+}
+window.onload = init();
+
+
+
+
+
+
+
+
+$('.html').percentcircle({
+
+animate : true,
+diameter : 100,
+guage: 2,
+coverBg: '#fff',
+bgColor: '#efefef',
+fillColor: '#5c93c8',
+percentSize: '15px',
+percentWeight: 'normal'
+});
+
+$('.php').percentcircle({
+
+animate : true,
+diameter : 100,
+guage: 2,
+coverBg: '#fff',
+bgColor: '#efefef',
+fillColor: '#C70039',
+percentSize: '15px',
+percentWeight: 'normal'
+});
+$('.java').percentcircle({
+
+animate : true,
+diameter : 100,
+guage: 4,
+coverBg: '#fff',
+bgColor: '#efefef',
+fillColor: 'green',
+percentSize: '15px',
+percentWeight: 'normal'
+});
+$('.c-sharp').percentcircle({
+
+animate : true,
+diameter : 100,
+guage: 2,
+coverBg: '#fff',
+bgColor: '#efefef',
+fillColor: 'red',
+percentSize: '15px',
+percentWeight: 'normal'
+});
+
+
+
+});
+
+
+
+
+</script>
 
 
 </body>
