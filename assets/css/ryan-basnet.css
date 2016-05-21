@@ -2,7 +2,7 @@
 * @Author: Rajesh Basnet
 * @Date:   2016-05-20 12:52:34
 * @Last Modified by:   Rajesh Basnet
-* @Last Modified time: 2016-05-20 17:45:07
+* @Last Modified time: 2016-05-21 18:40:46
 */
 
 
@@ -27,11 +27,34 @@
 /* ----------------------------------------*/
 
 
+.page-header{
+	border:none;
+}
+.page-subheader{
+	text-align: center;
+	padding:10px 0px;
+}
+
 
 /* ------------------------------------------*/
 /* ---------->>> HEADINGS <<<----------------*/
 /* -----------------------------------------*/
+	
+	h2{
+		text-align:center;
+		color:#F27360;
+		font-size: 53px;
+		font-weight: 600;
+		line-height: 60px;
+	}
 
+	h3{
+		
+		color:#485868;
+		font-size: 43px;
+		font-weight: 600;
+		line-height: 50px;
+	}
 
 /* -----------------------------------------*/
 /* ---------->>> NAVIGATION <<<-------------*/
@@ -95,7 +118,7 @@
 	.navbar-default .navbar-nav>li>a:hover{
             
             color:white;
-            
+
           }
 
 
@@ -133,15 +156,115 @@
 
 
 .jumbotron{
-	background: url('../images/jumbotron_bg.jpg') no-repeat center center fixed;;
+	background: url('../images/jumbotron_bg.jpg') no-repeat center center;
 	height: 100vh;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
+	padding: 0;
+		
+	}
+	
+	.hero-content{
+
+		margin-top: 150px;
+	}
+
+	.jumbotron h1{
+		
+		color:#fff;
+		font-family:Oleo Script;
+		font-size: 90px;
+		letter-spacing: 1.5px;
+		line-height: 93px;
+		margin-top:7%;
+		margin-bottom: 20px;
+	}
+
+
+	.jumbotron h4{
+
+		color:#fff;
+		font-size: 15pt
+		font-weight:50;
+		letter-spacing: 1px;
+		line-height: 30px;
+		font-weight: 100px;
+
+	}
+
+	.hero-footer{
+		
+		
+		width: 100%;
+		position: absolute;
+		bottom: 0;
 		
 	}
 
+	#home-social-links{
+	
+		padding: 5px;
+	
+	
+	}
+
+	#home-social-links a{
+
+		color:white;
+		font-size: 16px;
+	}
+
+	#home-social-links li{
+
+		display: inline-block;
+		list-style-type: none;
+		padding-right:40px;
+
+	}
+
+	.fa-github:hover{
+
+		color:#AB82D8;
+	}
+
+	.fa-twitter:hover{
+
+		color:#3CF;
+	}
+
+	.fa-codepen:hover{
+
+		color:#A3272A;
+	}
+
+	.fa-paper-plane-o:hover{
+
+		color:#428BCA;
+	}
+
+	.img-wrapper{
+
+		text-align: center;
+		margin-top: 10px;
+		margin-bottom: 20px;
+	}
+
+	.profile-img{
+
+		width:130px;
+		height: 130px;
+	}
+
+	.content{
+
+		color:#6E6F71;
+		font-size: 21px;
+		line-height:30px;
+		font-weight: 500;
+		text-align:center;
+	}
 	
 
 
@@ -172,6 +295,10 @@
 		
 		
 		
+	}
+	.hero-footer{
+
+		text-align: center;
 	}
 
 }
@@ -205,6 +332,7 @@
 		margin-bottom:7px;
 		
 	}
+
 	
 
 
@@ -214,7 +342,11 @@
 @media only screen and (min-width : 768px) {
 	
 	
+.hero-footer{
 
+		text-align: left;
+	}
+	
 	
 		
 }
