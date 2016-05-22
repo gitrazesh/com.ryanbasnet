@@ -2,8 +2,14 @@
 * @Author: Rajesh Basnet
 * @Date:   2016-05-20 12:52:34
 * @Last Modified by:   Rajesh Basnet
-* @Last Modified time: 2016-05-21 22:42:50
+* @Last Modified time: 2016-05-22 16:16:36
 */
+
+
+/*COLOR PALETTE*/
+/*DEEP ORANGE:#F27360 */
+/*PALE BLUE:#485868 */
+/*GRAY: #6E6F71 */
 
 
 
@@ -317,7 +323,115 @@ h2:after{
 		display: inline-block;
 		padding:5px 20px;
 	}
+
+	.contact-form-container{
+
+		padding:50px 40px;
+		background-color:#EDEFF0;
+		height: 600px;
+		border-radius: 10px;
+		margin-top:50px;
+	}
+
+.contact-form{
+	padding-right: 50px;
 	
+}
+
+
+.contact-details{
+	border-left: 2px grey dashed;
+	height:100%;
+	padding-left:40px;
+
+}
+	
+.contact-info dl{
+	padding-left:0;
+}
+
+	.contact-info dt {
+
+		
+		color:#F27360;
+		font-size: 14px;
+		line-height:20px;
+		font-weight: 600;
+		letter-spacing: .5px;
+		
+	}
+
+	.contact-info dd{
+	
+		color:#485868;
+		font-size: 14px;
+		
+		font-weight: 500;
+		letter-spacing: .5px;
+		padding-bottom: 30px;
+
+	}
+
+	#contact-section{
+		
+		margin-top: 50px;
+		margin-bottom: 50px;
+
+
+	}
+	.input-group{
+		border:2px #6E6F71 solid;
+		width:100%;
+	}
+	
+	.form-control {
+		border:none;
+		border-left:2px #6E6F71 solid;
+		/*background-color:#353E3D ;
+		border-radius: 0;*/
+		height: 50px;
+	}
+	.btn-success{
+		width: 100%;
+		height: 50px;
+	}
+	.btn-default{
+border:2px #6E6F71 solid;
+	}
+	.input-group-addon{
+
+		height: 50px;
+		border:none;
+		width: 60px;
+
+		background-color:transparent;
+	}
+	label{
+			
+		color:#485868;
+		
+		font-size: 18px;
+		
+		font-weight: 600;
+		
+		letter-spacing: .5px;
+
+	}
+
+	textarea.form-control{
+	border:2px #6E6F71 solid;
+}
+
+.form-group .btn-sucess{
+	width:100%;
+}
+
+.contact-info-social-links{
+	padding-left: 0;}
+	.contact-info-social-links li{
+	list-style-type: none;
+	margin: 10px 0px;
+}
 
 
 /* ----------------------------------------*/
@@ -412,6 +526,12 @@ h2:after{
 		text-align: left;
 	}
 	
+	.navbar{
+	
+		height: 120px;
+		
+	}
+
 	
 		
 }

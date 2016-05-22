@@ -202,8 +202,77 @@
 
 
 	<!-- Contact section -->
-	<div class="container">	
+	<div class="container" id="contact-section">	
 		<div class="page-header"><h2>Contact</h2></div>
+		<div class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+		<div class="row">
+			<div class="col-md-2"><!--Left Pane--></div>
+			<div class="col-md-8">
+				<div class="contact-form-container">
+					<div class="row">
+						
+						<div class="col-sm-8 contact-form"> <!-- Contact-form -->
+
+
+							<form role="form" id="contact-form">
+							  <div class="form-group">
+							    <label for="email">Name:</label>
+							    <div class="input-group">
+							     <span class = "input-group-addon glyphicon glyphicon-user"></span>
+							    <input type="email" class="form-control" id="email">
+							    </div>
+							  </div>
+							  <div class="form-group">
+							    <label for="pwd">Email:</label>
+							    <div class="input-group">
+							     <span class = "input-group-addon">@</span>
+							    <input type="email" class="form-control" id="email">
+							    </div>
+							  </div>
+							  <div class="form-group">
+							    <label for="pwd">Message:</label>
+
+							    <textarea class="form-control"  rows="10"></textarea>
+							  </div>
+
+							  <div class="form-group">
+							  <button type="submit" class="btn btn-success">Submit</button>
+							  </div>
+							</form>
+
+						</div> <!-- End contact-form -->
+						<div class="col-sm-4 visible-sm visible-md visible-lg  contact-details">
+							<dl class="contact-info">
+								<dt>EMAIL</dt>
+								<dd>rajesh2045@gmail.com</dd>
+								<dt>TELEPHONE</dt>
+								<dd>+61433371679</dd>
+								<dt>ADRESS</dt>
+								<dd>
+								<adress>13 St Georges Pde<br>
+								Hurstville<br>
+								NSW 2220<br>Australia</adress></dd>
+
+								<dt>ELSEWHERE</dt>
+								<dd>
+									
+									<ul class="contact-info-social-links">
+									<li><a href="" target="_blank" alt="github profile"><button class="btn btn-default"><i class="fa fa-github fa-2x" aria-hidden="true"></i></i></button></a></li>
+									<li><a href="" target="_blank" alt="github profile"><button class="btn btn-default"><i class="fa fa-codepen fa-2x" aria-hidden="true"></i></i></button></a></li>
+									<li><a href="" target="_blank" alt="github profile"><button class="btn btn-default"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></i></button></a></li></ul>
+
+
+								</dd>
+							</dl>
+
+						</div>
+						</div>
+					
+				</div>
+			</div>
+			<div class="col-md-2"><!--Right Pane--></div>
+
+		</div>
 
 
 
