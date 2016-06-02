@@ -30,18 +30,18 @@
 
 	<!-- Testing style sheet -->
 	<style>
-		
 		.container{
 			height: 100%;
 			width: 100%;
 			position: relative;
 			
-
 		}
+		
 	</style>
 </head>
 
-<body>
+<body data-spy="scroll" data-target=".navbar">
+
 
 	<!-- Navigation -->
 	<nav class="navbar navbar-default navbar-fixed-top">
@@ -59,10 +59,10 @@
 			</div>
 
 			 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      			<ul class="nav navbar-nav navbar-right">
-					<li><a href="">About</a></li>
-					<li><a href="">Work</a></li>
-					<li><a href="">Contact</a></li>
+      			<ul class="nav navbar-nav nav-right">
+					<li><a href="#about">About</a></li>
+					<li><a href="#work">Work</a></li>
+					<li><a href="#contact">Contact</a></li>
 				</ul>
 			</div>
 		</div>
@@ -71,321 +71,327 @@
 	<!-- Full view port size jumbotron -->
 	<div class="jumbotron">
 		<div class="container">
-			<div class="row hero-content">
-				
-				<div class="col-sm-3"></div>
-				<div class="col-sm-6 text-center">
-				<h1>I'm Ryan.</h1>
-				<h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias at molestiae id totam ipsum nam possimus eos fugit ad ipsam nostrum dicta, cum provident optio.</h4>
-				</div>
-				<div class="col-sm-3"></div>
-			</div> <!-- End hero-content -->
 			
+			<!-- Jumbotron content section -->
+			<div class="row hero-content">
+				<div class="col-sm-3"></div>
+					<div class="col-sm-6 
+								text-center">
+						<h1>I'm Ryan.</h1>
+						<h4>A web developer based on SYDNEY.
+							I love building simple and elegant website that meets your personal purpose or business solution.</h4>
+					</div>
+				<div class="col-sm-3"></div>
+			</div> <!-- End jumbotron content section-->
+			
+			<!-- Jumbotron footer section -->
 			<div class="row hero-footer">
-				
 				<div class="col-sm-12">    
-					<ul id="home-social-links">
+					<ul class="home-social-links">
             			<li >
-              				<a href="" target="_blank" alt="github profile"><i class="fa fa-github fa-lg" aria-hidden="true"></i></a>
+              				<a href="" 
+              					target="_blank" 
+              					alt="github profile">
+              					<i class="fa fa-github fa-lg" 
+              						aria-hidden="true">
+              					</i>
+              				</a>
             			</li>
 			            <li>
-			              <a href="" target="_blank"><i class="fa fa-codepen fa-lg" aria-hidden="true"></i></a>
+			              <a href="" 
+			              	target="_blank">
+			              	<i class="fa fa-codepen fa-lg" 
+			              		aria-hidden="true">
+			              	</i>
+			              </a>
 			            </li>
 			            <li>
-			              <a href="" target="_blank"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a>
+			              <a href="" 
+			              	target="_blank">
+			              	<i class="fa fa-twitter fa-lg" 
+			              		aria-hidden="true">
+			              	</i>
+			              </a>
 			            </li>
 			            <li>
-			              <a href="" target="_blank"><i class="fa fa-paper-plane-o fa-lg" aria-hidden="true"></i></a>
+			              <a href="" 
+			              	target="_blank">
+			              	<i class="fa fa-paper-plane-o fa-lg" 
+			              		aria-hidden="true">
+			              	</i>
+			              </a>
 			            </li>
           			</ul>
 				</div>
-				
 			</div> <!-- End hero-footer -->
 		</div>
 	</div> <!-- End of jumbotron -->
 
 	<!-- About section -->
-	<div class="container about">
-		<article>
+	<div class="container about-section" id="about">
+		<article> <!-- Introduction area -->
 			<div class="page-header">
 				<h2 style="">Who Am I</h2>
 			</div>
-			<div class="img-wrapper">
-				<img class="profile-img img-circle" src="<?php echo base_url()?>assets/images/profile_img.jpg" alt="">
+			<div class="profile-image-wrapper">
+				<img class="profile-image img-thumbnail img-circle" 
+					src="<?php echo base_url()?>assets/images/profile_img.jpg" 
+					alt="Ryan Basnet">
 			</div>
 			<div class="row">
 				<div class="col-sm-3"></div>
-				<div class="col-sm-6 content">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta optio nobis atque harum, quisquam. Corrupti atque modi itaque totam dolorum enim minus quidem mollitia inventore, illo autem dele. 
+				<div class="col-sm-6">
+					<div class="content">Hi,I am freelance web developer from Sydney, Australia.
+										I have a passion for web development and  love to build simple,clean and functional website. 
+					</div>
 				</div>
 				<div class="col-sm-3"></div>
 			</div>
 		</article>
-		<div class="page-subheader"><h3>I'm Good At</h3></div>
-		<div class="row">
-			<!-- <div class="col-sm-3"></div> -->
-			<div class="col-sm-12">
-				<div class="skill-chart">
-					<ul class="skill-list">
-						<li> <!-- HTML -->
-							<div class="panel panel-default">
-								<div class="panel-body">
-									<div class="html" data-percent="70"></div>
+		<article> <!-- Skills area -->
+			<div class="page-subheader"><h3>I'm Good At</h3></div>
+			<div class="row">
+				<!-- <div class="col-sm-3"></div> -->
+				<div class="col-sm-12">
+					<div class="skill-chart-wrapper">
+						<ul class="skill-chart-list">
+						<?php foreach ($skill_list as $skill): ?>
+							<li> <!-- circle chart -->
+								<div class="panel panel-default skill-chart-panel">
+									<div class="panel-body">
+										<div class="<?php echo str_replace(" ","-",$skill['skill_name'])?>" data-percent="<?php echo $skill['skill_level'] ?>"></div>
+									</div>
+									<div class="panel-footer">
+										<button class="btn btn-default" type="button"><?php echo $skill['skill_name'] ?></button></div>
 								</div>
-								<div class="panel-footer">
-									<button class="btn btn-primary" type="button">HTML & CSS</button></div>
-							</div>
-						</li>
-						<li> <!-- js -->
-							<div class="panel panel-default">
-								<div class="panel-body">
-									<div class="html" data-percent="60"></div>
-								</div>
-								<div class="panel-footer">
-									<button class="btn btn-warning" type="button">Javascript</button></div>
-							</div>
-						</li>
-						<li> <!-- php -->
-							<div class="panel panel-default">
-								<div class="panel-body">
-									<div class="php" data-percent="65"></div>
-								</div>
-								<div class="panel-footer">
-									<button class="btn btn-danger" type="button">PHP</button></div>
-							</div>
-						</li>
-						<li> <!-- java -->
-							<div class="panel panel-default">
-								<div class="panel-body">
-									<div class="java" data-percent="65"></div>
-								</div>
-								<div class="panel-footer">
-									<button class="btn btn-success" type="button">Java</button></div>
-							</div>
-						</li>
-						<li> <!-- c-sharp -->
-							<div class="panel panel-default">
-								<div class="panel-body">
-									<div class="c-sharp" data-percent="60"></div>
-								</div>
-								<div class="panel-footer">
-									<button class="btn btn-danger" type="button">C#</button></div>
-							</div>
-						</li>
-			
-					</ul>
+							</li>
+								
+							<?php endforeach ?>	
+						</ul>
+					</div> <!-- End skill-chart-wrapper -->
+				</div>
+			</div> <!-- End row -->
+		</article>
+		<article>
+			<div class="page-subheader"><h3>How Can I Help</h3></div>
+			<div class="row">
+				<div class="col-sm-3"></div>
+				<div class="col-sm-6 content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quod dolorem, laborum hic et? Error, placeat pariatur</div>
+				<div class="col-sm-3"></div>
 			</div>
-
-			</div>
-			<!-- <div class="col-sm-3"></div> -->
-		</div>
-		<div class="page-subheader"><h3>How Can I Help</h3></div>
-		<div class="row">
-			<div class="col-sm-3"></div>
-			<div class="col-sm-6 content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius quod dolorem, laborum hic et? Error, placeat pariatur</div>
-			<div class="col-sm-3"></div>
-
-		</div>
-		<br>
-		<br>
-		<br>
-		<br>
-	</div>
-
+		</article>
+	</div> <!-- End about section -->
+	
 	<!-- Work section -->
-	<div class="container">	
+	<div class="container work-section" id="work">	
 		<div class="page-header"><h2>Work</h2></div>
+		<div class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+		 <div class="row">
+	        <div class="col-md-2"></div>
+	              
+	        <div class="col-md-8 well image-container ">  
+	             <!-- image container-->     
+	            
+
+	                <div id="grid" data-columns>
+	                    <?php foreach ($project_list as $project) :?> 
+	                    <div class="outer"><img class="gallery-item thumbnail slide" id="1" 
+	                    src="<?php echo base_url()?>assets/gallery/<?php echo $project["project_image_name"]?>" alt="">
 
 
+	                    <div class="overlay"></div>
+	                    <div class="project-link"><button type="button" class="btn btn-default project">View Project</button></div></div>
 
-	</div>
+	                    <?php endforeach?>
+	                </div>
+	                      
+	        </div>
 
+
+            <!-- End of image-container -->
+        </div>
+        
+
+        <div class="col-md-2"></div>
+   </div>
+	
 
 	<!-- Contact section -->
-	<div class="container" id="contact-section">	
-		<div class="page-header"><h2>Contact</h2></div>
-		<div class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-		<div class="row">
-			<div class="col-md-2"><!--Left Pane--></div>
-			<div class="col-md-8">
-				<div class="contact-form-container">
-					<div class="row">
-						
-						<div class="col-sm-8 contact-form"> <!-- Contact-form -->
-
-
-							<form role="form" id="contact-form">
-							  <div class="form-group">
-							    <label for="email">Name:</label>
-							    <div class="input-group">
-							     <span class = "input-group-addon glyphicon glyphicon-user"></span>
-							    <input type="email" class="form-control" id="email">
-							    </div>
-							  </div>
-							  <div class="form-group">
-							    <label for="pwd">Email:</label>
-							    <div class="input-group">
-							     <span class = "input-group-addon">@</span>
-							    <input type="email" class="form-control" id="email">
-							    </div>
-							  </div>
-							  <div class="form-group">
-							    <label for="pwd">Message:</label>
-
-							    <textarea class="form-control"  rows="10"></textarea>
-							  </div>
-
-							  <div class="form-group">
-							  <button type="submit" class="btn btn-success">Submit</button>
-							  </div>
-							</form>
-
-						</div> <!-- End contact-form -->
-						<div class="col-sm-4 visible-sm visible-md visible-lg  contact-details">
-							<dl class="contact-info">
-								<dt>EMAIL</dt>
-								<dd>rajesh2045@gmail.com</dd>
-								<dt>TELEPHONE</dt>
-								<dd>+61433371679</dd>
-								<dt>ADRESS</dt>
-								<dd>
-								<adress>13 St Georges Pde<br>
-								Hurstville<br>
-								NSW 2220<br>Australia</adress></dd>
-
-								<dt>ELSEWHERE</dt>
-								<dd>
-									
-									<ul class="contact-info-social-links">
-									<li><a href="" target="_blank" alt="github profile"><button class="btn btn-default"><i class="fa fa-github fa-2x" aria-hidden="true"></i></i></button></a></li>
-									<li><a href="" target="_blank" alt="github profile"><button class="btn btn-default"><i class="fa fa-codepen fa-2x" aria-hidden="true"></i></i></button></a></li>
-									<li><a href="" target="_blank" alt="github profile"><button class="btn btn-default"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></i></button></a></li></ul>
-
-
-								</dd>
-							</dl>
-
-						</div>
-						</div>
-					
-				</div>
+	<div class="container contact-section" id="contact">	
+			<div class="page-header">
+				<h2>Contact</h2>
 			</div>
-			<div class="col-md-2"><!--Right Pane--></div>
+			<div class="content">I would love to hear from you.
+								  Drop me a line or give me a ring and lets get to know each other.
+			</div>
+			
+			<div class="row">
+				<div class="col-md-2"><!--Left Pane--></div>
+				<div class="col-md-8">
+					<div class="contact-form-container">
+						<div class="row">
 
-		</div>
+							<div class="col-sm-8 contact-form"> <!-- Contact-form -->
+								<form role="form" 
+									  id="contact-form"
+									  onsubmit="FomrValidator.checkValue(event)">
+							  			
+							  			<!-- Name input field area -->
+							  			<div class="form-group">
+							    			<label for="email">Name:</label>
+							    			<div class="input-group">
+								     			<span class = "input-group-addon glyphicon glyphicon-user"></span>
+								    			<input type="text" 
+								    				 	class="form-control"
+							    				 	id="name"
+							    				 	required>
+							    			</div>
+							    			<span class="name-error error "></span>
+							  			</div> <!-- End name input field area -->
+							  			
+							  			<!-- Email input  field area -->
+							  			<div class="form-group">
+							    			<label for="pwd">Email:</label>
+							    			<div class="input-group">
+							     				<span class = "input-group-addon">@</span>
+							    				<input type="email"
+							    						class="form-control"
+							    						id="email"
+							    						required>
+							    			</div>
+							    			<span class="email-error error "></span>
+							  			</div> <!-- End email input field area -->
+							  			
+							  			<!-- Message textarea -->
+							  			<div class="form-group">
+							    			<label for="pwd">Message:</label>
+											<div class="input-group">
+							     				<span class = "input-group-addon glyphicon glyphicon-comment"></span>
+							    				<textarea class="form-control" id="message" rows="10" required></textarea>
+							    			</div>
+							   				<span class="error message-error"></span>
+							  			</div> <!-- End message textarea -->
 
+							  			<div class="form-group">
+							  				<button type="submit" class="btn btn-success">Submit</button>
+							  			</div>
+								</form>
+							</div> <!-- End contact-form -->
+						
+							<div class="col-sm-4 visible-sm visible-md visible-lg  contact-details">
+								<dl class="contact-info">
+									<dt>EMAIL</dt>
+									<dd>rajesh2045@gmail.com</dd>
+									<dt>TELEPHONE</dt>
+									<dd>+61433371679</dd>
+									<dt>ADRESS</dt>
+									<dd>
+									<adress>13 St Georges Pde<br>
+									Hurstville<br>
+									NSW 2220<br>Australia</adress></dd>
 
-
+									<dt>FINDE ME ON</dt>
+									<dd>
+										<ul class="contact-info-social-links">
+											<li>
+												<a href="" 
+													target="_blank"
+													alt="github profile">
+														<button class="btn btn-default">
+															<i class="fa fa-github fa-2x" 
+																aria-hidden="true">
+															</i>
+														</button>
+												</a>
+											</li>
+											<li>
+												<a href=""
+													target="_blank"
+													alt="github profile">
+														<button class="btn btn-default">
+															<i class="fa fa-codepen fa-2x"
+																aria-hidden="true">
+															</i>
+														</button>
+												</a>
+											</li>
+											<li>
+												<a href=""
+													target="_blank"
+													alt="github profile">
+														<button class="btn btn-default">
+															<i class="fa fa-linkedin fa-2x"
+																aria-hidden="true">
+															</i>
+														</button>
+												</a>
+											</li>
+										</ul>
+									</dd>
+								</dl>
+							</div> <!-- End contact-details -->
+						</div>
+					</div>
+				</div>
+				<div class="col-md-2"><!--Right Pane--></div>
+			</div>
 	</div>
 
-	<!-- Footer -->
+	
 
+	<!-- Footer -->
 	<footer>
 		<div class="container">
 			<div class="row">
-				<div class="cr-banner"><small>&copy 2016 ryan</small></div>
+				<div class="footer"><small>&copy 2016 ryan</small></div>
 			</div>
 		</div>
 	</footer>
 
+<script  src="<?php echo base_url()?>assets/js/salvattore.js"></script>
+<script  src="<?php echo base_url()?>assets/js/jquery.visible.js"></script>
+<script  src="<?php echo base_url()?>assets/js/com.ryanbasne.js"></script>
 
+<script>
 
+$(document).ready(function(){	
 
+//Darken navigation header on scrolling
+ AnimateNavHeader.animateHeader();
 
+//smooth scroller
+SmoothScroller.smoothScroll();
 
-
-
-
-
-
-
-
-
-<script>	
-
-
-
-$(document).ready(function(){
-
-
-function init() {
-
-    window.addEventListener('scroll', function(e){
-        var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-            shrinkOn = 180,
-            header = document.querySelector("header");
-        if (distanceY > shrinkOn) {
-            $(".navbar-default").addClass("navbar-overlay");
-        } else {
-             $(".navbar-default").removeClass("navbar-overlay");
-        }
-    });
+//Getting data for the circle chart animation 
+var skill_list =<?php echo json_encode($skill_list); ?>;
+var arrayForCircleChart=[];
+for (var i=0;i<skill_list.length; i++){
+	
+	var className=skill_list[i].skill_name.replace(/ /g,"-"); // thi ensure the css class naming convenction if skill name has space like HTML & CSS ==>HTML-&-CSS
+	var fillColor=skill_list[i].skill_color_code;
+	//alert(fillColor);
+	circle={
+		className:className,
+		fillColor:fillColor
+	};
+	arrayForCircleChart.push(circle);
 }
-window.onload = init();
 
+//animating circle when circle chart area is visible
+var chartVisible=false;
+$(window).scroll(function(){
 
-
-
-
-
-
-
-$('.html').percentcircle({
-
-animate : true,
-diameter : 100,
-guage: 2,
-coverBg: '#fff',
-bgColor: '#efefef',
-fillColor: '#5c93c8',
-percentSize: '15px',
-percentWeight: 'normal'
-});
-
-$('.php').percentcircle({
-
-animate : true,
-diameter : 100,
-guage: 2,
-coverBg: '#fff',
-bgColor: '#efefef',
-fillColor: '#C70039',
-percentSize: '15px',
-percentWeight: 'normal'
-});
-$('.java').percentcircle({
-
-animate : true,
-diameter : 100,
-guage: 4,
-coverBg: '#fff',
-bgColor: '#efefef',
-fillColor: 'green',
-percentSize: '15px',
-percentWeight: 'normal'
-});
-$('.c-sharp').percentcircle({
-
-animate : true,
-diameter : 100,
-guage: 2,
-coverBg: '#fff',
-bgColor: '#efefef',
-fillColor: 'red',
-percentSize: '15px',
-percentWeight: 'normal'
+	chartVisible=$('.skill-chart-list').visible();
+	if(chartVisible==true){
+		CircleChartCreator.createCircleChart(arrayForCircleChart);
+		$(window).off("scroll");
+	}
 });
 
 
-
-});
-
-
-
+}); //End document ready function
 
 </script>
 
-
 </body>
-
 </html>

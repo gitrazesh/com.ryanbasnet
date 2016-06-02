@@ -1,0 +1,12 @@
+<!-- <!-- <!-- <?php foreach ($skill_list as $skill): ?>
+								<li> <!-- c-sharp -->
+								<div class="panel panel-default skill-chart-panel">
+									<div class="panel-body">
+										<div class="<?php echo str_replace(" ","-",$skill['skill_name'])?>" data-percent="<?php echo $skill['skill_level'] ?>"></div>
+									</div>
+									<div class="panel-footer">
+										<button class="btn btn-default" type="button"><?php echo $skill['skill_name'] ?></button></div>
+								</div>
+							</li>
+								
+							<?php endforeach ?> --> --> -->
