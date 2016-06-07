@@ -7,15 +7,13 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="author" content="Ryan Basnet">
-	<title>Ryan</title>
 	<meta name="description" content="web developer portfolio">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Ryan</title>
 	
-	<!-- Jquery CDN -->
-	<script   src="https://code.jquery.com/jquery-2.2.3.min.js" ></script>
-	<!-- Bootstrap js -->
-	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	<!-- Jquery circle chart plugin -->
-	<script type="text/javascript" src="<?php echo base_url()?>assets/js/jquery.circlechart.js"></script>
+	
+	
+
 	<!-- Web fonts -->
 	<link href='https://fonts.googleapis.com/css?family=Ubuntu:400,500,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
@@ -24,8 +22,14 @@
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 	<!-- Bootstrap css -->
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<!-- Master css -->
 	<link rel="stylesheet" href="<?php echo base_url()?>assets/css/ryan-basnet.css">
+	<!-- Jquery CDN -->
+	<script   src="https://code.jquery.com/jquery-2.2.3.min.js" ></script>
+	<!-- Bootstrap js -->
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	
 	
 
 	<!-- Testing style sheet -->
@@ -42,7 +46,10 @@
 
 <body data-spy="scroll" data-target=".navbar">
 
-
+<div class="loader-wrapper"><div class="loader"></div>
+  <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+</div>
 	<!-- Navigation -->
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
@@ -58,8 +65,8 @@
 				<a class="navbar-brand" href=""><img id="logo" src="<?php base_url()?>assets/images/ryan_basnet_logo.png" alt="Ryan Basnet"></a>
 			</div>
 
-			 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      			<ul class="nav navbar-nav nav-right">
+			 <div class="collapse navbar-collapse" id="my-nav">
+      			<ul class="nav navbar-nav navbar-right">
 					<li><a href="#about">About</a></li>
 					<li><a href="#work">Work</a></li>
 					<li><a href="#contact">Contact</a></li>
@@ -86,13 +93,14 @@
 			
 			<!-- Jumbotron footer section -->
 			<div class="row hero-footer">
+				<div class="scroll-down-arrow text-center"><a href="#about"><img src="<?php echo base_url()?>assets/images/arrow-1.gif" alt=""></a></div>
 				<div class="col-sm-12">    
 					<ul class="home-social-links">
             			<li >
               				<a href="" 
               					target="_blank" 
               					alt="github profile">
-              					<i class="fa fa-github fa-lg" 
+              					<i class="fa fa-github fa-lg home-social-icon" 
               						aria-hidden="true">
               					</i>
               				</a>
@@ -100,7 +108,7 @@
 			            <li>
 			              <a href="" 
 			              	target="_blank">
-			              	<i class="fa fa-codepen fa-lg" 
+			              	<i class="fa fa-codepen fa-lg home-social-icon" 
 			              		aria-hidden="true">
 			              	</i>
 			              </a>
@@ -108,15 +116,15 @@
 			            <li>
 			              <a href="" 
 			              	target="_blank">
-			              	<i class="fa fa-twitter fa-lg" 
+			              	<i id="twitter" class="fa fa-twitter fa-lg home-social-icon" 
 			              		aria-hidden="true">
 			              	</i>
 			              </a>
 			            </li>
 			            <li>
-			              <a href="" 
-			              	target="_blank">
-			              	<i class="fa fa-paper-plane-o fa-lg" 
+			              <a href="mailto:basnetrahzes@hotmail.com" 
+			              	target="">
+			              	<i class="fa fa-paper-plane-o fa-lg home-social-icon" 
 			              		aria-hidden="true">
 			              	</i>
 			              </a>
@@ -185,7 +193,7 @@
 	<!-- Work section -->
 	<div class="container work-section" id="work">	
 		<div class="page-header"><h2>Work</h2></div>
-		<div class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+		<div class="content">Check out some of my projects.</div>
 		 <div class="row">
 	        <div class="col-md-2"></div>
 	              
@@ -195,7 +203,7 @@
 
 	                <div id="grid" data-columns>
 	                    <?php foreach ($project_list as $project) :?> 
-	                    <div class="outer"><img class="gallery-item thumbnail slide" id="1" 
+	                    <div class="outer slide-anim"><img class="gallery-item thumbnail slide" id="1" 
 	                    src="<?php echo base_url()?>assets/gallery/<?php echo $project["project_image_name"]?>" alt="">
 
 
@@ -228,57 +236,65 @@
 			<div class="row">
 				<div class="col-md-2"><!--Left Pane--></div>
 				<div class="col-md-8">
-					<div class="contact-form-container">
+					<div class="contact-form-container slide-anim">
 						<div class="row">
 
-							<div class="col-sm-8 contact-form"> <!-- Contact-form -->
+							<div class="col-sm-9 contact-form"> <!-- Contact-form -->
 								<form role="form" 
 									  id="contact-form"
-									  onsubmit="FomrValidator.checkValue(event)">
+									  method="post"
+									  >
+
 							  			
 							  			<!-- Name input field area -->
-							  			<div class="form-group">
+							  			<div class="form-group form-group-name">
 							    			<label for="email">Name:</label>
 							    			<div class="input-group">
 								     			<span class = "input-group-addon glyphicon glyphicon-user"></span>
 								    			<input type="text" 
 								    				 	class="form-control"
-							    				 	id="name"
-							    				 	required>
+							    				 		id="name"
+							    				 		name="name"
+							    				 		required>
 							    			</div>
-							    			<span class="name-error error "></span>
+							    			<p class="name-error error "></p>
 							  			</div> <!-- End name input field area -->
 							  			
 							  			<!-- Email input  field area -->
-							  			<div class="form-group">
+							  			<div class="form-group form-group-email">
 							    			<label for="pwd">Email:</label>
 							    			<div class="input-group">
 							     				<span class = "input-group-addon">@</span>
 							    				<input type="email"
 							    						class="form-control"
 							    						id="email"
+							    						name="email"
 							    						required>
 							    			</div>
-							    			<span class="email-error error "></span>
+							    			<p class="email-error error "></p>
 							  			</div> <!-- End email input field area -->
 							  			
 							  			<!-- Message textarea -->
-							  			<div class="form-group">
-							    			<label for="pwd">Message:</label>
+							  			<div class="form-group form-group-message">
+							    			<label for="message">Message:</label>
 											<div class="input-group">
 							     				<span class = "input-group-addon glyphicon glyphicon-comment"></span>
-							    				<textarea class="form-control" id="message" rows="10" required></textarea>
+							    				<textarea class="form-control"
+							    							id="message" rows="10"
+							    							name="message"
+							    							name="message"
+							    							required></textarea>
 							    			</div>
-							   				<span class="error message-error"></span>
+							   				<p class="error message-error"></p>
 							  			</div> <!-- End message textarea -->
 
 							  			<div class="form-group">
-							  				<button type="submit" class="btn btn-success">Submit</button>
+							  				<button type="submit" class="btn btn-primary">Submit</button>
 							  			</div>
 								</form>
 							</div> <!-- End contact-form -->
 						
-							<div class="col-sm-4 visible-sm visible-md visible-lg  contact-details">
+							<div class="col-sm-3 visible-sm visible-md visible-lg  contact-details">
 								<dl class="contact-info">
 									<dt>EMAIL</dt>
 									<dd>rajesh2045@gmail.com</dd>
@@ -335,10 +351,8 @@
 				</div>
 				<div class="col-md-2"><!--Right Pane--></div>
 			</div>
-	</div>
-
+	</div> <!-- End work section -->
 	
-
 	<!-- Footer -->
 	<footer>
 		<div class="container">
@@ -348,24 +362,55 @@
 		</div>
 	</footer>
 
-<script  src="<?php echo base_url()?>assets/js/salvattore.js"></script>
-<script  src="<?php echo base_url()?>assets/js/jquery.visible.js"></script>
-<script  src="<?php echo base_url()?>assets/js/com.ryanbasne.js"></script>
+<!-- Global variable for external js  -->
+<script>var baseURL = "<?php echo base_url(); ?>";</script>
+<!-- Jquery circle chart plugin -->
+<script type="text/javascript" src="<?php echo base_url()?>assets/js/libs/jquery.circlechart.js"></script>
+<!-- Masonary image gallery plugin -->
+<script  src="<?php echo base_url()?>assets/js/libs/salvattore.js"></script>
+<script  src="<?php echo base_url()?>assets/js/libs/jquery.visible.js"></script>
+<script  src="<?php echo base_url()?>assets/js/com.ryanbasnet.js"></script>
+<script   src="https://code.jquery.com/ui/1.12.0-rc.2/jquery-ui.js"   integrity="sha256-6HSLgn6Ao3PKc5ci8rwZfb//5QUu3ge2/Sw9KfLuvr8="   crossorigin="anonymous"></script>
 
 <script>
+$(document).ready(function(){
 
-$(document).ready(function(){	
+	
+	setTimeout(function(){
+        $('body').addClass('loaded');
+        $('h1').css('color','#222222');
+    }, 100);
 
+    $(window).scroll(function(){
+
+    	
+		var sctop=$(window).scrollTop();
+		
+		if(sctop>200){
+
+			$(".scroll-down-arrow").hide();
+		}
+		else{
+
+			$(".scroll-down-arrow").show();
+		}
+
+    });
+
+
+    
+
+	$("#contact-form").submit(FomrValidator.checkValue);
 //Darken navigation header on scrolling
- AnimateNavHeader.animateHeader();
+	AnimateNavHeader.animateHeader();
 
-//smooth scroller
-SmoothScroller.smoothScroll();
+	//smooth scroller
+	SmoothScroller.smoothScroll();
 
-//Getting data for the circle chart animation 
-var skill_list =<?php echo json_encode($skill_list); ?>;
-var arrayForCircleChart=[];
-for (var i=0;i<skill_list.length; i++){
+	//Getting data for the circle chart animation 
+	var skill_list =<?php echo json_encode($skill_list); ?>;
+	var arrayForCircleChart=[];
+	for (var i=0;i<skill_list.length; i++){
 	
 	var className=skill_list[i].skill_name.replace(/ /g,"-"); // thi ensure the css class naming convenction if skill name has space like HTML & CSS ==>HTML-&-CSS
 	var fillColor=skill_list[i].skill_color_code;
@@ -375,19 +420,48 @@ for (var i=0;i<skill_list.length; i++){
 		fillColor:fillColor
 	};
 	arrayForCircleChart.push(circle);
-}
-
-//animating circle when circle chart area is visible
-var chartVisible=false;
-$(window).scroll(function(){
-
-	chartVisible=$('.skill-chart-list').visible();
-	if(chartVisible==true){
-		CircleChartCreator.createCircleChart(arrayForCircleChart);
-		$(window).off("scroll");
 	}
+
+	//animating circle when cirle chart area is visible 
+	(function(){
+
+		var chartVisible=false;
+		$(window).scroll(isChartVisible);
+
+
+		function isChartVisible(){
+			
+		chartVisible=$('.skill-chart-list').visible();
+		if(chartVisible==true){
+			CircleChartCreator.createCircleChart(arrayForCircleChart);
+			$(this).off("scroll",isChartVisible); //remove event handler when chart is visible;
+		}
+		}
+	})();
+
+
+	// slide-in
+	var win = $(window);
+	var allMods = $(".slide-anim");
+
+// Already visible modules
+allMods.each(function(i, el) {
+  var el = $(el);
+  if (el.visible(true)) {
+    el.addClass("already-visible"); 
+  } 
 });
 
+win.scroll(function(event) {
+  
+  allMods.each(function(i, el) {
+    var el = $(el);
+    if (el.visible(true)) {
+      el.addClass("slide-in"); 
+    } 
+  });
+  
+});
 
 }); //End document ready function
 
