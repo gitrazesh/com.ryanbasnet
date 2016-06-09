@@ -1,4 +1,3 @@
-
 <?php defined('BASEPATH') OR exit('No direct script access allowed');?>
 
 <!DOCTYPE html>
@@ -22,13 +21,13 @@
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 	<!-- Bootstrap css -->
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	<!-- Master css -->
-	<link rel="stylesheet" href="<?php echo base_url()?>assets/css/ryan-basnet.css">
 	<!-- Jquery CDN -->
 	<script   src="https://code.jquery.com/jquery-2.2.3.min.js" ></script>
 	<!-- Bootstrap js -->
 	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<!-- Master css -->
+	<link rel="stylesheet" href="<?php echo base_url()?>assets/css/ryan-basnet.css">
+	
 	
 	
 
@@ -51,7 +50,7 @@
     <div class="loader-section section-right"></div>
 </div>
 	<!-- Navigation -->
-	<nav class="navbar navbar-default navbar-fixed-top">
+	<nav class="navbar navbar-custom navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#my-nav">
@@ -197,7 +196,7 @@
 		 <div class="row">
 	        <div class="col-md-2"></div>
 	              
-	        <div class="col-md-8 well image-container ">  
+	        <div class="col-md-8 well  ">  
 	             <!-- image container-->     
 	            
 
@@ -235,17 +234,13 @@
 			
 			<div class="row">
 				<div class="col-md-2"><!--Left Pane--></div>
-				<div class="col-md-8">
-					<div class="contact-form-container slide-anim">
+				<div class="col-md-8	contact-form-container well slide-anim">
 						<div class="row">
-
 							<div class="col-sm-9 contact-form"> <!-- Contact-form -->
 								<form role="form" 
 									  id="contact-form"
 									  method="post"
 									  >
-
-							  			
 							  			<!-- Name input field area -->
 							  			<div class="form-group form-group-name">
 							    			<label for="email">Name:</label>
@@ -347,8 +342,7 @@
 								</dl>
 							</div> <!-- End contact-details -->
 						</div>
-					</div>
-				</div>
+				</div><!--  Contact-form-container -->
 				<div class="col-md-2"><!--Right Pane--></div>
 			</div>
 	</div> <!-- End work section -->
@@ -374,94 +368,28 @@
 
 <script>
 $(document).ready(function(){
-
+	//css preloader
+	PageAnimation.cssPreLoader();
 	
-	setTimeout(function(){
-        $('body').addClass('loaded');
-        $('h1').css('color','#222222');
-    }, 100);
+	//content slide in animation
+	PageAnimation.slideAnimation();
+	
+	//Darekn navbar on scroll
+	PageAnimation.animateNavBar();
+	
+	//scroll down arrow hide/show
+	PageAnimation.animateScrollDownArrow();
 
-    $(window).scroll(function(){
-
-    	
-		var sctop=$(window).scrollTop();
-		
-		if(sctop>200){
-
-			$(".scroll-down-arrow").hide();
-		}
-		else{
-
-			$(".scroll-down-arrow").show();
-		}
-
-    });
-
-
-    
-
-	$("#contact-form").submit(FomrValidator.checkValue);
-//Darken navigation header on scrolling
-	AnimateNavHeader.animateHeader();
-
-	//smooth scroller
+	//Smooth scroller
 	SmoothScroller.smoothScroll();
-
-	//Getting data for the circle chart animation 
+   
+	//Circle chart
 	var skill_list =<?php echo json_encode($skill_list); ?>;
-	var arrayForCircleChart=[];
-	for (var i=0;i<skill_list.length; i++){
-	
-	var className=skill_list[i].skill_name.replace(/ /g,"-"); // thi ensure the css class naming convenction if skill name has space like HTML & CSS ==>HTML-&-CSS
-	var fillColor=skill_list[i].skill_color_code;
-	//alert(fillColor);
-	circle={
-		className:className,
-		fillColor:fillColor
-	};
-	arrayForCircleChart.push(circle);
-	}
+	CircleChartCreator.createCircleChart(skill_list);
 
-	//animating circle when cirle chart area is visible 
-	(function(){
-
-		var chartVisible=false;
-		$(window).scroll(isChartVisible);
-
-
-		function isChartVisible(){
+	//Validate and process form
+	$("#contact-form").submit(FomrValidator.checkValue);
 			
-		chartVisible=$('.skill-chart-list').visible();
-		if(chartVisible==true){
-			CircleChartCreator.createCircleChart(arrayForCircleChart);
-			$(this).off("scroll",isChartVisible); //remove event handler when chart is visible;
-		}
-		}
-	})();
-
-
-	// slide-in
-	var win = $(window);
-	var allMods = $(".slide-anim");
-
-// Already visible modules
-allMods.each(function(i, el) {
-  var el = $(el);
-  if (el.visible(true)) {
-    el.addClass("already-visible"); 
-  } 
-});
-
-win.scroll(function(event) {
-  
-  allMods.each(function(i, el) {
-    var el = $(el);
-    if (el.visible(true)) {
-      el.addClass("slide-in"); 
-    } 
-  });
-  
-});
 
 }); //End document ready function
 

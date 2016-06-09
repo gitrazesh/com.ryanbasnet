@@ -2,34 +2,8 @@
 * @Author: Rajesh Basnet
 * @Date:   2016-05-28 13:28:59
 * @Last Modified by:   Rajesh Basnet
-* @Last Modified time: 2016-06-06 03:03:34
+* @Last Modified time: 2016-06-09 16:09:38
 */
-
-/*
-*
-* Animates the navigation header on page scroll
-*
-*/
-var AnimateNavHeader =(function(){
-	
-	var animateNavHeader=function animateHeader() {
-    
-	    window.addEventListener('scroll', function(e){
-	        
-	        var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-	            shrinkOn = 180;
-	        if (distanceY > shrinkOn) {
-	            
-	            $(".navbar-default").addClass("navbar-dark-background");
-	        } else {
-	             
-	             $(".navbar-default").removeClass("navbar-dark-background");
-	        }
-	    });
-	} //End animateHeader
-
-	return{ animateHeader:animateNavHeader};
-}());
 
 
 /*
@@ -72,12 +46,39 @@ var SmoothScroller =(function(){
 */
 var CircleChartCreator =(function(){
 
-	var createChart =function createCircleChart(circleArray){
+	var createChart =function createCircleChart(skill_list){
 
-		for (var i = 0;i<circleArray.length; i++){
-			createCircle(circleArray[i]);
-		}
+		
+		var chartVisible=false;
+		$(window).scroll({skill_list:skill_list},isChartVisible);		
 	}
+
+
+
+	//checks skill-section  visibvility and crates chart
+	function isChartVisible(event){
+		skill_list=event.data.skill_list;
+		 chartVisible=$('.skill-chart-list').visible();
+
+			if(chartVisible==true){
+			
+				skill_list.forEach(function(skill){
+		
+					var className=skill.skill_name.replace(/ /g,"-"); // thi ensure the css class naming convenction if skill name has space like HTML & CSS ==>HTML-&-CSS
+					var fillColor=skill.skill_color_code;
+					//alert(fillColor);
+					circle={
+						className:className,
+						fillColor:fillColor
+					};
+					createCircle(circle);
+				});
+				//remove event handler when chart is visible;
+				$(window).off("scroll",isChartVisible); 
+			}
+		}
+
+	
 
 	//create a individual circle using circle chart plugin
 	function createCircle(circleObject){
@@ -171,3 +172,99 @@ var ProjectItemAnimator=(function(){
 
 	});
 })();
+
+
+/*
+*
+*Css preloader,slide animation,navigation bar animation
+*
+*/
+
+var PageAnimation=(function(){
+
+		// cached DOM
+			var win = $(window);
+			var allMods = $(".slide-anim");
+
+		var cssPreLoader=function(){
+
+			setTimeout(function(){
+        		$('body').addClass('loaded');
+       			 $('h1').css('color','#222222');
+    		}, 100);
+		};
+
+
+		var slideAnimation=function(){
+
+
+			
+
+			// Already visible modules
+			allMods.each(function(i, element) {
+
+		  		var element = $(element);
+		  		if (element.visible(true)) {
+		    	
+		    	element.addClass("already-visible"); 
+		  		} 
+			});
+
+			win.scroll(function(event) {
+
+		  		allMods.each(function(i, element) {
+		    		var element = $(element);
+		    		if (element.visible(true)) {
+		      		
+		      		element.addClass("slide-in"); 
+		    		} 
+		  		});
+		 	});
+		};
+
+
+		var animateNavBar=function animateNavBar() {
+	    
+		    window.addEventListener('scroll', function(e){
+		        
+		        var distanceY = window.pageYOffset || document.documentElement.scrollTop,
+		            shrinkOn = 180;
+		        if (distanceY > shrinkOn) {
+		            
+		            $(".navbar-custom").addClass("navbar-dark-background");
+		        } else {
+		             
+		             $(".navbar-custom").removeClass("navbar-dark-background");
+		        }
+		    });
+		} //End animateHeader
+
+
+		var animateScrollDownArrow=function(){
+
+			win.scroll(function(){
+				var sctop=win.scrollTop();
+		
+		if(sctop>200){
+
+			$(".scroll-down-arrow").hide();
+		}
+		else{
+
+			$(".scroll-down-arrow").show();
+		}
+
+    });
+		}
+
+		return{
+
+			cssPreLoader:cssPreLoader,
+			animateNavBar:animateNavBar,
+			slideAnimation:slideAnimation,
+			animateScrollDownArrow:animateScrollDownArrow
+		
+
+	};
+
+	})();
