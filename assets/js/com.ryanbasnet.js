@@ -2,7 +2,7 @@
 * @Author: Rajesh Basnet
 * @Date:   2016-05-28 13:28:59
 * @Last Modified by:   Rajesh Basnet
-* @Last Modified time: 2016-06-09 16:09:38
+* @Last Modified time: 2016-06-10 15:32:12
 */
 
 
@@ -135,12 +135,13 @@ var FomrValidator=(function(){
 					});//End each function
 				}else{
 					
-					var alertBox='<div class="alert alert-success text-center fade in">'+
-					'<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+
-					'<strong>'+response.message+'</strong></div>';
+					var alertMessage=response.message;
 					$("#contact-form").find("input[type=text],input[type=email], textarea").val("");
-					$(".contact-form").before(alertBox);
-				}
+					$("#contact-form").before(alertMessage);
+					 $("#alert").fadeTo(2000, 500).slideUp(1500, function(){
+               		$("#alert").alert('close');});
+
+				 } // end else
 		}
 		}); //End ajax all
 		

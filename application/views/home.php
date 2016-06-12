@@ -8,11 +8,9 @@
 	<meta name="author" content="Ryan Basnet">
 	<meta name="description" content="web developer portfolio">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Ryan</title>
-	
-	
-	
-
+	<title>Ryan Basnet</title>
+	<!-- Favicon -->
+	<link rel='shortcut icon' href='<?php echo base_url()?>assets/images/favicon-ryan.png' type='image/x-icon' >
 	<!-- Web fonts -->
 	<link href='https://fonts.googleapis.com/css?family=Ubuntu:400,500,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
@@ -45,10 +43,10 @@
 
 <body data-spy="scroll" data-target=".navbar">
 
-<div class="loader-wrapper"><div class="loader"></div>
-  <div class="loader-section section-left"></div>
-    <div class="loader-section section-right"></div>
-</div>
+	<div class="loader-wrapper"><div class="loader"></div>
+	  <div class="loader-section section-left"></div>
+	    <div class="loader-section section-right"></div>
+	</div>
 	<!-- Navigation -->
 	<nav class="navbar navbar-custom navbar-fixed-top">
 		<div class="container-fluid">
@@ -196,18 +194,18 @@
 		 <div class="row">
 	        <div class="col-md-2"></div>
 	              
-	        <div class="col-md-8 well  ">  
+	        <div class="col-md-8 image-container well  ">  
 	             <!-- image container-->     
 	            
 
 	                <div id="grid" data-columns>
 	                    <?php foreach ($project_list as $project) :?> 
-	                    <div class="outer slide-anim"><img class="gallery-item thumbnail slide" id="1" 
+	                    <div class="outer slide-anim"><img class="gallery-item thumbnail"  
 	                    src="<?php echo base_url()?>assets/gallery/<?php echo $project["project_image_name"]?>" alt="">
 
 
 	                    <div class="overlay"></div>
-	                    <div class="project-link"><button type="button" class="btn btn-default project">View Project</button></div></div>
+	                    <div class="project-link"><h4><?php echo $project['project_name'] ?></h4><button type="button" class="btn btn-default project">View Project</button></div></div>
 
 	                    <?php endforeach?>
 	                </div>
@@ -220,9 +218,8 @@
         
 
         <div class="col-md-2"></div>
-   </div>
+   </div> <!-- End work section -->
 	
-
 	<!-- Contact section -->
 	<div class="container contact-section" id="contact">	
 			<div class="page-header">
@@ -276,7 +273,6 @@
 							     				<span class = "input-group-addon glyphicon glyphicon-comment"></span>
 							    				<textarea class="form-control"
 							    							id="message" rows="10"
-							    							name="message"
 							    							name="message"
 							    							required></textarea>
 							    			</div>
@@ -345,7 +341,7 @@
 				</div><!--  Contact-form-container -->
 				<div class="col-md-2"><!--Right Pane--></div>
 			</div>
-	</div> <!-- End work section -->
+	</div> <!-- End contact section -->
 	
 	<!-- Footer -->
 	<footer>
@@ -354,9 +350,9 @@
 				<div class="footer"><small>&copy 2016 ryan</small></div>
 			</div>
 		</div>
-	</footer>
+	</footer> <!-- End footer<!--  -->
 
-<!-- Global variable for external js  -->
+<!-- Global variable for external js file -->
 <script>var baseURL = "<?php echo base_url(); ?>";</script>
 <!-- Jquery circle chart plugin -->
 <script type="text/javascript" src="<?php echo base_url()?>assets/js/libs/jquery.circlechart.js"></script>
@@ -389,6 +385,8 @@ $(document).ready(function(){
 
 	//Validate and process form
 	$("#contact-form").submit(FomrValidator.checkValue);
+	
+
 			
 
 }); //End document ready function

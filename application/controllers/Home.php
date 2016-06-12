@@ -5,7 +5,7 @@
  * @Author: Rajesh Basnet
  * @Date:   2016-05-20 12:44:36
  * @Last Modified by:   Rajesh Basnet
- * @Last Modified time: 2016-06-05 12:49:25
+ * @Last Modified time: 2016-06-12 11:10:08
  */
 
 
@@ -14,6 +14,7 @@ class Home extends CI_Controller{
 
 	function __construct(){
 		parent :: __construct();
+
 	}
 
 
@@ -27,14 +28,22 @@ class Home extends CI_Controller{
 
 
 	public function processEmail(){
+		
+		if (!$_SERVER['HTTP_REFERER']) {
+			redirect('/home/test_page');
+		}
 
-		$this->load->library('form_validation');
+		//load library
+		$this->load->library('form_validation');  
+                $this->load->library('email');
+                $this->load->library('session');
+	
 
+		//get form value
 		$name=$this->input->post('name');
 		$email=$this->input->post('email');
-		$message=$this->input->post('message');
+		$form_message=$this->input->post('message');
 		
-
 		//validation rules
 		$config = array(
 
@@ -70,26 +79,45 @@ class Home extends CI_Controller{
 
 		$this->form_validation->set_rules($config);
 
+
 		if($this->form_validation->run()){
-				
-			$data=array(
+		
+                $to="basnetrahzes@hotmail.com";
+                $subject="ryanbasnet.xyz";
+	     		$headers = "From: $email\r\n";
+                $header.="Reply-to: $email";
+                $message=$form_messag;
+                $sent = mail($to, $subject, $message, $headers);
+      
+      		if($sent){
+     			
+	     			$alert ='<div class="alert alert-success" id="alert">
+	                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	                                 <strong>Thank you'.$name.'</strong> for getting in touch.I will get back to you ASAP';
 
-				"error"=>false,
-				"message"=>"Thank you ".$name." for getting in touch.I will get back to you ASAP"
-				);
+					$data=array(
+						"error"=>false,
+						"message"=>$alert
+					);
 
 
-		}
+			}else{
+			       $alert ='<div class="alert alert-danger" id="alert">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <strong>Sorry</strong>, email not sent.Something went wrong, try again.';
 
-		else {
+					$data=array(
+						"error"=>false,
+						"message"=>$alert
+						);
+			} 
+		}else {
 			
-
 			$errors=$this->form_validation->error_array();
 			$data=array(
 				"error"=>true,
 				"errors"=>$errors
 				);
-
 		}
 
 		
@@ -107,7 +135,7 @@ class Home extends CI_Controller{
 
 	}
 
-	public function getProjectList(){
+	private function getProjectList(){
 
 		$this->load->model("ProjectModel");
 		
@@ -118,10 +146,5 @@ class Home extends CI_Controller{
 
 
 
-public function testPage(){
 
-		$this->load->view('test');
-
-}	
-	
 }

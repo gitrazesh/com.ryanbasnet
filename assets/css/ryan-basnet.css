@@ -2,21 +2,12 @@
 * @Author: Rajesh Basnet
 * @Date:   2016-05-20 12:52:34
 * @Last Modified by:   Rajesh Basnet
-* @Last Modified time: 2016-06-09 16:28:43
+* @Last Modified time: 2016-06-11 15:39:02
 */
 
 
-/*COLOR PALETTE*/
-/*DEEP ORANGE:#F27360 */
-/*PALE BLUE:#485868 */
-/*GRAY: #6E6F71 */
 
 
-
-
-/* ------------------------------------------*/
-/* ------>>> ERIC MYERE RESET CSS <<<--------*/
-/* -----------------------------------------*/
 
 
 /* -----------------------------------------*/
@@ -28,7 +19,12 @@
 /* ---------->>> GLOBAL <<<----------------*/
 /* ----------------------------------------*/
 
-/*color codes*/
+/*COLOR PALETTE*/
+/*DEEP ORANGE:#F27360 */
+/*PALE BLUE:#485868 */
+/*GRAY: #6E6F71 */
+
+
 
 /* ----------------------------------------*/
 /* ---------->>> HEADER <<<----------------*/
@@ -69,6 +65,8 @@
 	line-height: 93px;
 	margin-top:7%;
 	margin-bottom: 20px;
+	text-shadow: 0px 0px 20px 0.1;
+
 }
 	
 h2{
@@ -511,6 +509,12 @@ label{
 
 }
 
+#alert{
+
+	margin:10px;
+
+}
+
 /*Error Section*/
 
 
@@ -549,7 +553,7 @@ label{
 }
 
 
-/**/
+/*Work section*/
 .outer{
 
 	position: relative;
@@ -586,13 +590,16 @@ label{
 	
 	text-align: center;
 	position: absolute;
+	top:0;
 	z-index: 3;
 	margin:0 auto;
-	top:40%;
-	left:25%;
 	opacity:0;
+	width:100%;
+	height:100%;
+	border: red 1px solid;
 
 }
+
 .project{
 
 	background-color: transparent;
