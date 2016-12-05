@@ -17,11 +17,8 @@
         "slim/flash": "^0.1.0",
         "respect/validation": "^1.1",
         "vlucas/phpdotenv": "^2.4",
-        "aws/aws-sdk-php": "^3.19",
-        "sendgrid/sendgrid": "^5.1",
-        "slim/csrf": "^0.7.0",
-        "guzzlehttp/guzzle": "^6.2",
-        "facebook/php-sdk-v4": "^5.4"
+        "slim/csrf": "^0.7.0"
+        
     },
 
     "autoload":{

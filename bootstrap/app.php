@@ -7,7 +7,7 @@
  * @Last Modified time: 2016-12-05 19:26:36
  */
 
-session_start();
+
 date_default_timezone_set('Australia/Sydney');
 
 require __DIR__ . '/../vendor/autoload.php';
@@ -86,9 +86,9 @@ $container['view'] = function ($container){
     $view->addExtension(new Twig_Extension_Debug());
 
     //set global variable in view
-    $view->getEnvironment()->addGlobal('flash',$container->flash->getMessages());
-    $view->getEnvironment()->addGlobal('loggedUser',$container->auth->user());
-    $view->getEnvironment()->addGlobal('isLoggedIn',$container->auth->check());
+    // $view->getEnvironment()->addGlobal('flash',$container->flash->getMessages());
+    // $view->getEnvironment()->addGlobal('loggedUser',$container->auth->user());
+ 
 	
 	return $view;
 };
@@ -101,19 +101,6 @@ $container['validator'] = function ($container){
 };
 
 
-/** Auth Middleware */
-
-$container['auth'] = function($container){
-
-	return new \App\Auth\Auth($container);
-};
-
-/** class to check resource ownership **/
-$container['owner'] = function($container){
-
-	return new \App\Auth\CheckOwnership($container);
-};
-
 
 
 /**
@@ -121,15 +108,6 @@ $container['owner'] = function($container){
  */
 
 
-
-$container['AuthController'] = function($container){
-
-	return new \App\Controllers\Auth\AuthController($container);
-};
-$container['PasswordController'] = function($container){
-
-	return new \App\Controllers\Auth\PasswordController($container);
-};
 
 
 
@@ -139,27 +117,6 @@ $container['PageController'] = function($container){
 };
 
 
-$container['UserController'] = function($container){
-
-	return new \App\Controllers\UserController($container);
-};
-
-
-$container['CategoryController'] = function($container){
-
-	return new \App\Controllers\CategoryController($container);
-};
-
-$container['PostController'] = function($container){
-
-	return new \App\Controllers\PostController($container);
-};
-
-$container['CommentController'] = function($container){
-
-	return new \App\Controllers\CommentController($container);
-};
-
 
 
 /**
@@ -167,75 +124,35 @@ $container['CommentController'] = function($container){
  */
 
 /** User **/
-$container['user'] = function($container){
+// $container['user'] = function($container){
 
-	$connection = $container->connection;
-	return new \App\Models\User($connection);
-};
-
-
-/** Category **/
-$container['category'] = function($container){
-
-	$connection = $container->connection;
-	return new \App\Models\Category($connection);
-};
-
-
-/** Post  **/
-$container['post'] = function($container){
-
-	$connection = $container->connection;
-	return new \App\Models\Post($connection);
-};
-
-
-/** Comment */
-$container['comment'] = function($container){
-
-	$connection = $container->connection;
-	return new \App\Models\Comment($connection);
-};
-
-
-/** Password reset */
-$container['passwordReset'] = function($container){
-
-	$connection = $container->connection;
-	return new \App\Models\PasswordReset($connection);
-};
-
-
-$app->add(new \App\Middleware\OldInputMiddleware($container));
-$app->add(new \App\Middleware\CsrfMiddleware($container));
-
-$app->add($container->get('csrf'));
-
-
+// 	$connection = $container->connection;
+// 	return new \App\Models\User($connection);
+// };
 
 /**
  * Error Handler
  */
 
 //404
-$container['notFoundHandler'] = function ($container) {
+// $container['notFoundHandler'] = function ($container) {
  
- 	return function ($request, $response) use ($container) {
+//  	return function ($request, $response) use ($container) {
 
- 		$container->view->render($response,'errors/404error.twig',['errorStatusCode'=>'404','errorStatusMessage'=>'Page Not Found']);
+//  		$container->view->render($response,'errors/404error.twig',['errorStatusCode'=>'404','errorStatusMessage'=>'Page Not Found']);
  
-  		return $response->withStatus(404);          
-		};
-};
+//   		return $response->withStatus(404);          
+// 		};
+// };
 
-$container['errorHandler'] = function ($container) {
-    return function ($request, $response, $exception) use ($container) {
+// $container['errorHandler'] = function ($container) {
+//     return function ($request, $response, $exception) use ($container) {
 
-        $container->view->render($response,'errors/505error.twig',['errorStatusCode'=>'500','errorStatusMessage'=>'Sorry, something went wrong.']);
+//         $container->view->render($response,'errors/505error.twig',['errorStatusCode'=>'500','errorStatusMessage'=>'Sorry, something went wrong.']);
  
-  		return $response->withStatus(404); 
-    };
-};
+//   		return $response->withStatus(404); 
+//     };
+// };
 
 
 

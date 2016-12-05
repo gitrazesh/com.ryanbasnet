@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	
+	{% include 'includes/header.twig' %}
+
+<body data-spy="scroll" data-target=".navbar">
+	<div class="container-fluid">
+	<!-- Preloader -->
+	{# {% include 'includes/preloader.twig' %} #}
+
+	<!-- Navigation -->
+	{% include 'includes/navigation.twig' %}
+
+	<!-- Main -->
+	{% block main %}
+	{% endblock main %}
+		
+		
+		
+	<!-- Footer -->
+
+	{% include 'includes/footer.twig' %}
+</div>
+	<!-- Bootstrap core JavaScript
+		================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- Masonary image gallery plugin -->
+	<script  src="/js/libs/salvattore.js"></script>
+	<script  src="js/libs/jquery.visible.js"></script>
+	<script  src="js/com.ryanbasnet.js"></script>
+
+	<script>
+
+		$(document).ready(function(){
+			
+			alert("Iam");
+			//css preloader
+			PageAnimation.cssPreLoader();
+			
+			// //content slide in animation
+			// PageAnimation.slideAnimation();
+			
+			//Darekn navbar on scroll
+			PageAnimation.animateNavBar();
+			
+			//scroll down arrow hide/show
+			PageAnimation.animateScrollDownArrow();
+
+			//Smooth scroller
+			SmoothScroller.smoothScroll();
+
+			//Validate and process form
+			$("#contact-form").submit(FomrValidator.checkValue);
+			
+		}); //End document ready function
+
+</script>
+</body>
+
+</html>
