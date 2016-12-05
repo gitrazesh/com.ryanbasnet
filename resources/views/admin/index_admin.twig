@@ -1,0 +1,66 @@
+{% extends 'admin/layout_admin.twig' %}
+{% block main %}
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="page-header">
+                Welcome {{loggedUser.first_name}}
+            </h3>
+            <div class="btn-group btn-breadcrumb breadcrumb">
+                <a href="{{path_for('admin.dashboard')}}" class="btn btn-info"><i class="glyphicon glyphicon-home"></i> Dashboard</a>
+          </div>
+
+        </div>
+        <!-- /.col-lg-12 -->
+        <div class="row">
+            <div class="col-md-4 dashboard-mini-card">
+                
+                <!-- card -->
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">
+                        POSTS
+                    </div>
+                    <div class="panel-body bg-info">
+                        <h2 class="text-center">{{totalPost}}</h2> 
+                    </div>
+                    <div class="panel-footer">
+                        <a href="{{path_for('admin.posts')}}" class="">got to posts</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- card -->
+            <div class="col-md-4 dashboard-mini-card">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">
+                        COMMENTS
+                    </div>
+                    <div class="panel-body bg-danger">
+                        <h2 class="text-center">{{totalComment}}</h2>
+                    </div>
+                    <div class="panel-footer">
+                        <a href="{{path_for('admin.comments')}}" class="">got to comments</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- card -->
+            <div class="col-md-4 dashboard-mini-card">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">
+                        VIEWS 
+                    </div>
+                    <div class="panel-body bg-success">
+                        <h2 class="text-center">48</h2>
+                        
+                    </div>
+                    <div class="panel-footer">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.row -->
+{% endblock main %}

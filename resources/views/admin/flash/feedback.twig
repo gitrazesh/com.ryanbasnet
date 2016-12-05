@@ -1,0 +1,9 @@
+{% if flash %}
+	{% for key,value in flash %}
+		<div id="feedback" class="{{ key}}">
+  			<a href="#" class="dismiss"  aria-label="close">&times;</a>
+			<p class="text-center">{{ value[0] }}</p>
+	  </div>
+	{% endfor %}
+{% endif %}
+
