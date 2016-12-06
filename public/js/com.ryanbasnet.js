@@ -136,14 +136,13 @@ var PageAnimation=(function(){
 			var allMods = $(".slide-anim");
 
 		var cssPreLoader=function(){
-			alert('i am here');
+
 
 			setTimeout(function(){
         		$('body').addClass('loaded');
        			 $('h1').css('color','#222222');
     		}, 100);
 		};
-
 
 		var slideAnimation=function(){
 

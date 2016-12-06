@@ -19,11 +19,11 @@ class PageController extends Controller{
 	 * @return [type]           [description]
 	 */
 	public function getIndex($request,$response){
-
-		
+		$projects = $this->container->project->findAll();
+	
 		return $this->container
 					->view
-					->render($response,'index.twig');
+					->render($response,'index.twig',['projects'=>$projects]);
 
 
 	}

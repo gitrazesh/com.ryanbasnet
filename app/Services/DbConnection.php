@@ -13,7 +13,7 @@ public static function getConnection(){
 
 	try {
 		
-		$connection = new PDO('mysql:host=localhost;dbname='. getenv('db_name'), getenv('db_user'), getenv('db_pass'));
+		$connection = new PDO('mysql:host=localhost;dbname='. getenv('DB_NAME'), getenv('DB_USER'), getenv('DB_PASS'));
 		$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		
 		} catch (PDOException $e) {

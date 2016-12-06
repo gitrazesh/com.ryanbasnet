@@ -1,157 +1,226 @@
-
 {% extends 'layout.twig' %}
 {% block main %}
 
-<div class="jumbotron">
+<!-- jumbotron section -->
+<section>
+	<!-- jumotron-->
+	<div class="jumbotron">
 		<div class="container-fluid">
-			
-			<!-- Jumbotron content section -->
+			<!-- her-content -->
 			<div class="row hero-content">
-				<div class="col-sm-3"></div>
-					<div class="col-sm-6 
-								text-center">
-						<h1>I'm Ryan.</h1>
-						<p>A web developer based on SYDNEY.
-							I love building simple and elegant website that meets your personal purpose or business solution.</p>
-					</div>
-				<div class="col-sm-3"></div>
-			</div> <!-- End jumbotron content section-->
+				<div class="col-sm-6 col-sm-offset-3 text-center">
+					<h1>I'm Ryan.</h1>
+					<p>A web developer based on SYDNEY.
+						I love building simple and elegant website that meets your personal purpose or business solution.
+					</p>
+				</div>
+			</div> 
+			<!-- End hero-content-->
 			
 			<!-- Jumbotron footer section -->
 			<div class="row">
-				<div class="scroll-down-arrow text-center row"><a href="#about"><i class="fa fa-chevron-down"></i></a></div>
-				   
-					<ul class="home-social-links">
-            			<li >
-              				<a href="https://github.com/gitrazesh" 
-              					target="_blank" 
-              					>
-              					<i class="fa fa-github fa-lg home-social-icon" 
-              						aria-hidden="true">
-              					</i>
-              				</a>
-            			</li>
-			            <li>
-			              <a href="https://codepen.io/dev-ryan/" 
-			              	target="_blank">
-			              	<i class="fa fa-codepen fa-lg home-social-icon" 
-			              		aria-hidden="true">
-			              	</i>
-			              </a>
-			            </li>
-			            <li>
-			              <a href="https://www.linkedin.com/in/rajesh-basnet-507a8260?trk=nav_responsive_tab_profile" 
-			              	target="_blank">
-			              	<i id="twitter" class="fa fa-linkedin fa-lg home-social-icon" 
-			              		aria-hidden="true">
-			              	</i>
-			              </a>
-			            </li>
-			            <li>
-			              <a href="mailto:basnetrahzes@hotmail.com" 
-			              	target="">
-			              	<i class="fa fa-paper-plane-o fa-lg home-social-icon" 
-			              		aria-hidden="true">
-			              	</i>
-			              </a>
-			            </li>
-          			</ul>
+				<div class="scroll-down-arrow text-center">
+					<a href="#about">
+						<i class="fa fa-chevron-down"></i>
+					</a>
 				</div>
-			</div> <!-- End hero-footer -->
-		
-	</div> <!-- End of jumbotron -->
 
-	<!-- About section -->
-	<div class="container about-section" id="about">
-		<article> <!-- Introduction area -->
-			<div class="page-header">
-				<h2 style="">Who Am I</h2>
+				<!-- social-links -->
+				<ul class="home-social-links">
+    				
+    				<li >
+      					<a href="https://github.com/gitrazesh" target="_blank">
+      						<i class="fa fa-github fa-lg home-social-icon" aria-hidden="true"></i>
+      					</a>
+    				</li>
+	            	
+	            	<li>
+	              		<a href="https://codepen.io/dev-ryan/" target="_blank">
+	              			<i class="fa fa-codepen fa-lg home-social-icon" aria-hidden="true"></i>
+	              		</a>
+	            	</li>
+	            	
+	            	<li>
+	             		<a href="https://www.linkedin.com/in/rajesh-basnet-507a8260?trk=nav_responsive_tab_profile" target="_blank">
+	              			<i id="twitter" class="fa fa-linkedin fa-lg home-social-icon" aria-hidden="true"></i>
+	              		</a>
+	            	</li>
+	            	
+	            	<li>
+		              	<a href="mailto:basnetrahzes@hotmail.com" target="">
+		              		<i class="fa fa-paper-plane-o fa-lg home-social-icon" aria-hidden="true"></i>
+	              		</a>
+	            	</li>
+  				</ul>
+  				<!-- End home-social-links -->
 			</div>
-			<div class="profile-image-wrapper">
-				<img class="profile-image img-thumbnail img-circle" 
-					src="https://s3-us-west-2.amazonaws.com/ryanbasnet/profile_img.jpg" 
-					alt="Ryan Basnet">
-			</div>
-			<div class="row">
-				<div class="col-sm-3"></div>
-				<div class="col-sm-6">
-					<div class="content">Hi,I am freelance web developer from Sydney, Australia.
-										I have a passion for web development and  love to build simple,clean and functional website. 
-					</div>
-				</div>
-				<div class="col-sm-3"></div>
-			</div>
-		</article>
+			<!-- End row -->
 		</div>
-	<!-- Contact section -->
-	<div class="container contact-section" id="contact">	
-			<div class="page-header">
-				<h2>Contact</h2>
-			</div>
-			<div class="content">I would love to hear from you.
-								  Drop me a line or give me a ring and lets get to know each other.
-			</div>
-			
-			<div class="row">
-				<div class="col-md-2"><!--Left Pane--></div>
-				<div class="col-md-8	contact-form-container slide-anim">
-						<div class="row">
-							<div class="col-sm-10 col-sm-offset-1 contact-form"> <!-- Contact-form -->
-								<form role="form" 
-									  id="contact-form"
-									  method="post"
-									  >
-							  			<!-- Name input field area -->
-							  			<div class="form-group form-group-name">
-							    			<label for="email">Name:</label>
-							    			<div class="input-group">
-								     			<span class = "input-group-addon glyphicon glyphicon-user"></span>
-								    			<input type="text" 
-								    				 	class="form-control"
-							    				 		id="name"
-							    				 		name="name" placeholder="Name"
-							    				 		required>
-							    			</div>
-							    			<p class="name-error error "></p>
-							  			</div> <!-- End name input field area -->
-							  			
-							  			<!-- Email input  field area -->
-							  			<div class="form-group form-group-email">
-							    			<label for="pwd">Email:</label>
-							    			<div class="input-group">
-							     				<span class = "input-group-addon">@</span>
-							    				<input type="email"
-							    						class="form-control"
-							    						id="email"
-							    						name="email"
-							    						required>
-							    			</div>
-							    			<p class="email-error error "></p>
-							  			</div> <!-- End email input field area -->
-							  			
-							  			<!-- Message textarea -->
-							  			<div class="form-group form-group-message">
-							    			<label for="message">Message:</label>
-											<div class="input-group">
-							     				<span class = "input-group-addon glyphicon glyphicon-comment"></span>
-							    				<textarea class="form-control"
-							    							id="message" rows="10"
-							    							name="message"
-							    							required></textarea>
-							    			</div>
-							   				<p class="error message-error"></p>
-							  			</div> <!-- End message textarea -->
+		<!-- End container-fluid --> 	
+	</div> 
+	<!-- End jumbotron -->
+</section>
+<!-- End jumbotron section -->
 
-							  			<div class="form-group">
-							  				<button type="submit" class="btn btn-default btn-lg btn-send">Submit</button>
-							  			</div>
-								</form>
-							</div> <!-- End contact-form -->
-						
-						</div>
-				</div><!--  Contact-form-container -->
-				<div class="col-md-2"><!--Right Pane--></div>
-			</div>
-	</div> <!-- End contact section -->
+<!-- About section -->
+<section class="about-section" id="about">
 	
-	{% endblock main %}
+	<div class="page-header">
+		<h2 style="">Who Am I</h2>
+	</div>
+	
+	<div class="profile-image-wrapper">
+		<img class="profile-image img-thumbnail img-circle" src="https://s3-us-west-2.amazonaws.com/ryanbasnet/profile_img.jpg" alt="Ryan Basnet">
+	</div>
+	
+	<!-- row -->
+	<div class="row">
+		<div class="col-sm-6 col-sm-offset-3">
+			<p class="content">Hi,I am freelance web developer from Sydney, Australia.
+								I have a passion for web development and  love to build simple,clean and functional website. 
+			</p>
+		</div>
+	</div>
+	<!-- End row -->
+	
+	<!-- row -->
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3 resume-link">
+			<a href="https://s3-us-west-2.amazonaws.com/ryanbasnet/ryan_basnet.pdf" 
+				class="btn btn-default btn-resume view">
+				<i class="fa fa-download" aria-hidden="true" target="_blank" >&nbsp;&nbsp;</i>Download Resume</a>
+		</div>
+	</div>
+	<!-- End row -->
+</section>
+<!-- End about-section -->
+
+<!-- Work section -->
+<section class="work-section" id="work">
+
+	<div class="page-header">
+		<h2>Work</h2>
+	</div>
+		
+	<p class="content">Check out some of my projects.</p>
+	<div class="row work">
+        <div class="col-sm-10 col-sm-offset-1 image-container">  
+             <!-- image container-->   
+            <div id="grid" data-columns>
+            		                    
+            	{% for project in projects %}
+           
+                	<div class="panel panel-default panel-project">
+                		<div class="panel-body">
+                			<div class="outer slide-anim">
+                				<img class="gallery-item thumbnail slide" id="1" src="{{ project.project_image_url}}/project_thumbnail.jpg" alt="">
+
+								<!-- over-lay -->
+                    			<div class="overlay"></div>
+                    			<div class="project-link">
+                    				<button type="button" class="btn btn-default project">View Project</button>
+                    			</div>
+                    			<!-- End over-lay -->
+                			</div>
+                			<!-- End outer slid-anim -->
+            			</div>
+            			<!-- End panel-body -->
+            		
+                		<div class="panel-footer text-center">
+                
+                			<h5>{{project.client_name}}</h5>
+                			<p>{{project.project_name}}</p>
+                		</div>
+                		<!-- End panel-footer -->
+                	</div>
+                	<!-- End panel-project -->
+				{% endfor %}
+            </div>          
+        </div>
+        <!-- End image-container -->
+    </div>
+    <!-- End row -->
+</section>
+<!-- End work-section -->
+	
+<!-- Contact section -->
+<section class="container contact-section" id="contact">	
+	<div class="page-header">
+		<h2>Contact</h2>
+	</div>
+	<div class="content">I would love to hear from you.
+						  Drop me a line or give me a ring and lets get to know each other.
+	</div>
+		
+	<!-- row -->
+	<div class="row">
+		<div class="col-sm-8 col-sm-offset-2 contact-form-container slide-anim">
+			<!-- row -->
+			<div class="row">
+				 <!-- Contact-form -->
+				<div class="col-sm-10 col-sm-offset-1 contact-form">
+					<form role="form" 
+						  id="contact-form"
+						  method="post">
+				  		
+				  		<!-- Name input field area -->
+			  			<div class="form-group form-group-name">
+			    			<label for="email"></label>
+			    			<div class="input-group">
+				     			<span class = "input-group-addon fa fa-user"></span>
+				    			<input type="text" 
+				    				 	class="form-control"
+			    				 		id="name"
+			    				 		name="name" placeholder="Name"
+			    				 		required>
+			    			</div>
+			    			<p class="name-error error "></p>
+			  			</div> 
+			  			<!-- End name input field area -->
+				  			
+			  			<!-- Email input  field area -->
+			  			<div class="form-group form-group-email">
+			    			<label for="pwd"></label>
+			    			<div class="input-group">
+			     				<span class = "input-group-addon">@</span>
+			    				<input type="email"
+			    						class="form-control"
+			    						id="email" placeholder="Email"
+			    						name="email"
+			    						required>
+			    			</div>
+			    			<p class="email-error error "></p>
+			  			</div> 
+			  			<!-- End email input field area -->
+				  			
+			  			<!-- Message textarea -->
+			  			<div class="form-group form-group-message">
+			    			<label for="message"></label>
+							<div class="input-group">
+			     				<span class = "input-group-addon fa fa-comment"></span>
+			    				<textarea class="form-control"
+			    							id="message" rows="5"
+			    							name="message"  placeholder="Message"
+			    							required></textarea>
+			    			</div>
+			   				<p class="error message-error"></p>
+			  			</div> 
+			  			<!-- End message textarea -->
+
+			  			<div class="form-group">
+			  				<button type="submit" class="btn btn-default btn-lg btn-send">Submit</button>
+			  			</div>
+					</form>
+				</div> 
+				<!-- End contact-form -->
+			</div>
+			<!-- End row -->
+		</div>
+		<!-- End contact-form-container -->
+			
+	</div>
+	<!-- End row -->
+</section> 
+<!-- End contact section -->
+	
+{% endblock main %}

@@ -123,12 +123,12 @@ $container['PageController'] = function($container){
  * Model Registration
  */
 
-/** User **/
-// $container['user'] = function($container){
+/** Projects **/
+$container['project'] = function($container){
 
-// 	$connection = $container->connection;
-// 	return new \App\Models\User($connection);
-// };
+$connection = $container->connection;
+return new \App\Models\Project($connection);
+ };
 
 /**
  * Error Handler
