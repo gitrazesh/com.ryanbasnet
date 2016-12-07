@@ -21,13 +21,14 @@ class Validator{
 	 * @param  [type] $rules   [description]
 	 * @return [type]          [description]
 	 */
-	public function validate($request,$rules){
+	public function validate($data,$rules){
 
+		
 		foreach ($rules as $field => $rule) {
 
 			try{
 
-				$rule->setName(ucfirst($field))->assert($request->getParam($field));
+				$rule->setName(ucfirst($field))->assert($data[$field]);
 			
 			}catch(NestedValidationException $e){
 
@@ -38,7 +39,22 @@ class Validator{
 		return $this;
 	}
 
+	/**
+	 * [failed description]
+	 * @return [type] [description]
+	 */
+	public function failed(){
+		
+		return !empty($this->error);
+	}
 
+/**
+	 * [getError description]
+	 * @return [type] [description]
+	 */
+	public function getError(){
+		return $this->error;
+	}
 	
 }
 

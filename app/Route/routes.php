@@ -10,5 +10,6 @@ use \App\Middleware\AdminMiddleware;
 
 $app->get('/' ,'PageController:getIndex')
 	->setName('home');
-
+$app->post('/processEmail' ,'PageController:sendEmail');
+	
 ?>

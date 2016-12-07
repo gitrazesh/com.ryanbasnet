@@ -54,43 +54,57 @@ var SmoothScroller =(function(){
 * AJAX form submission
 *
 */
-var FomrValidator=(function(){
+var FormValidator=(function(e){
 
-	var checkValue=function checkValue(){
 
+	var checkValue=function checkValue(e){
+		e.preventDefault();
+		// alert('check');
 		//cached dom
 		var contact_form=$("#contact-form");
 		$(".input-group").removeClass("warning-border");
 		$(".contact-form p").html("");
-
+		// console.log(JSON.stringify(contact_form.serialize()));
 		$.ajax({
 
-			url:baseURL+"home/processEmail",
-			dataType:"json",
+			url:"/processEmail",
+			
 			data:contact_form.serialize(),
+			dataType:"json",
 			type:"post",
 			cache: false,
-			success: function(response){
+			success: function(response,status,jqXHR){
+				console.log(status);
+				console.dir(response);
 
-				if(response.error===true){
+				// if(response.error===true){
 					
-					var errors=response.errors;
-					$.each(errors, function(k, v){
+				// 	// var errors=response.errors;
+					
+				// 	// $.each(errors, function(k, v){
 						
-						var mydom=$(".form-group-"+k);
-						mydom.find(".input-group").addClass("warning-border");
-						mydom.find("p").html(v);
-					});//End each function
-				}else{
+				// 	// 	var mydom=$(".form-group-"+k);
+				// 	// 	mydom.find(".input-group").addClass("warning-border");
+				// 	// 	mydom.find("p").html(v);
+				// 	// });//End each function
+				// }else{
 					
-					var alertMessage=response.message;
-					$("#contact-form").find("input[type=text],input[type=email], textarea").val("");
-					$("#contact-form").before(alertMessage);
-					 $("#alert").fadeTo(2000, 500).slideUp(1500, function(){
-               		$("#alert").alert('close');});
+				// 	alert('Sorry');
+				// 	// var alertMessage=response.message;
+				// 	// $("#contact-form").find("input[type=text],input[type=email], textarea").val("");
+				// 	// $("#contact-form").before(alertMessage);
+				// 	//  $("#alert").fadeTo(2000, 500).slideUp(1500, function(){
+    //  //           		$("#alert").alert('close');});
 
-				 } // end else
-		}
+				//  } // end else
+		},
+		 error: function(xhr, textStatus, errorThrown){
+		 	console.dir(xhr);
+		 	console.dir(textStatus);
+		 	console.dir(errorThrown);
+		 	console.dir(xhr.responseJSON);
+       alert('request failed');
+    }
 		}); //End ajax all
 		
 		return false;

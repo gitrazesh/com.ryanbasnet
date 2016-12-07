@@ -86,14 +86,65 @@
 	<!-- row -->
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3 resume-link">
-			<a href="https://s3-us-west-2.amazonaws.com/ryanbasnet/ryan_basnet.pdf" 
+			<a href="https://s3-us-west-2.amazonaws.com/ryanbasnet/ryan_basnet.pdf" target="_blank"
 				class="btn btn-default btn-resume view">
-				<i class="fa fa-download" aria-hidden="true" target="_blank" >&nbsp;&nbsp;</i>Download Resume</a>
+				<i class="fa fa-download" aria-hidden="true"  >&nbsp;&nbsp;</i>Download Resume</a>
 		</div>
 	</div>
 	<!-- End row -->
 </section>
 <!-- End about-section -->
+
+<!-- Skills section -->
+<section class="skill-section" id="skill">
+	<div class="page-subheader">
+		<h3>I'm Good At</h3>
+	</div>
+	<!-- row -->
+	<div class="row">
+		<div class="col-sm-6 col-sm-offset-3">
+			<p class="content">I love doing both back-end and front-end development.I have an interest in UX design and creating aesthetic web application.I thrive for learning new technologies available in world of internet.</p>
+		</div>
+	</div>
+	<!-- End row -->
+	
+	<!-- row -->
+	<div class="row">
+		<div class="col-sm-12 text-center">
+			
+			<div class="hex-container">
+				
+				{% for skill in skills %}
+
+					<div class="hex-wrapper">
+						<div class="{{skill.skill |lower}}-border hex-top"></div>
+						<div class="hex-inner {{skill.skill |lower}}-bgc">{{skill.skill}}</div>
+						<div class="{{skill.skill |lower}}-border hex-bottom"></div>
+					</div>
+				{% endfor %}
+
+		
+			</div>
+			<!-- End hex-container -->
+		</div>
+	</div>
+	<!-- End row -->
+	<div class="page-subheader"><h3>How Can I Help</h3></div>
+		<div class="row">
+			<div class="col-sm-6 col-sm-offset-3">
+			<p class="content">I’m currently available for freelance work.If you have any personal project or web development solution required for your business then I can be of your help to complete task and  achieve your goal.Why not email or give me a ring ? So, we can get to know each other and jump start a new journey together.</p>
+			<div class="row text-center">
+				
+				 <a href="mailto:basnetrahzes@hotmail.com" target="">
+				 	<button class="btn btn-email"><i class="fa fa-envelope fa-1x" 
+			              		aria-hidden="true">
+			              	</i>&nbsp;&nbsp;&nbsp;Email Me</button>
+			     </a>
+			</div>
+		</div>
+		</div>
+</section>
+<!-- End skills section -->
 
 <!-- Work section -->
 <section class="work-section" id="work">
@@ -110,10 +161,10 @@
             		                    
             	{% for project in projects %}
            
-                	<div class="panel panel-default panel-project">
-                		<div class="panel-body">
-                			<div class="outer slide-anim">
-                				<img class="gallery-item thumbnail slide" id="1" src="{{ project.project_image_url}}/project_thumbnail.jpg" alt="">
+                	<div class="panel panel-default panel-project slide-anim">
+                		<div class="panel-body  slide">
+                			<div class="outer">
+                				<img class="gallery-item thumbnail" id="1" src="{{ project.project_image_url}}/project_thumbnail.jpg" alt="">
 
 								<!-- over-lay -->
                     			<div class="overlay"></div>
@@ -161,7 +212,9 @@
 				<div class="col-sm-10 col-sm-offset-1 contact-form">
 					<form role="form" 
 						  id="contact-form"
-						  method="post">
+						  method="post"
+						  
+						  onsubmit="FormValidator.checkValue(event)">
 				  		
 				  		<!-- Name input field area -->
 			  			<div class="form-group form-group-name">
@@ -180,7 +233,7 @@
 				  			
 			  			<!-- Email input  field area -->
 			  			<div class="form-group form-group-email">
-			    			<label for="pwd"></label>
+			    			<label for="email"></label>
 			    			<div class="input-group">
 			     				<span class = "input-group-addon">@</span>
 			    				<input type="email"

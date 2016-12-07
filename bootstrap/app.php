@@ -58,9 +58,9 @@ return \App\Services\DbConnection::getConnection();
 
 /** csrf middleware **/
 
-$container['csrf'] = function ($container) {
-    return new \Slim\Csrf\Guard;
-};
+// $container['csrf'] = function ($container) {
+//     return new \Slim\Csrf\Guard;
+// };
 
 /** Flash Message */
 $container['flash'] = function ($container){
@@ -128,6 +128,13 @@ $container['project'] = function($container){
 
 $connection = $container->connection;
 return new \App\Models\Project($connection);
+ };
+
+ /** Skill **/
+$container['skill'] = function($container){
+
+$connection = $container->connection;
+return new \App\Models\Skill($connection);
  };
 
 /**
