@@ -169,7 +169,7 @@
 								<!-- over-lay -->
                     			<div class="overlay"></div>
                     			<div class="project-link">
-                    				<a href="javascript:void(0)" data-id={{project.project_id}} class="btn btn-default project" onclick="return Project.showProjectModal(this)">View Project</a>
+                    				<a href="javascript:void(0)" data-id={{project.project_id}} class="btn btn-default btn-view-project" onclick="return Project.showProjectModal(this)">View Project</a>
                     			</div>
                     			<!-- End over-lay -->
                 			</div>
@@ -198,9 +198,8 @@
 <section class="container contact-section" id="contact">	
 	<div class="page-header">
 		<h2>Contact</h2>
-	</div>
-	<div class="content">I would love to hear from you.
-						  Drop me a line or give me a ring and lets get to know each other.
+		<p>I would love to hear from you.
+						  Drop me a line or give me a ring and lets get to know each other.</p>
 	</div>
 		
 	<!-- row -->
@@ -232,7 +231,7 @@
 			    				 		name="name" placeholder="Name"
 			    				 		required>
 			    			</div>
-			    			<p class="name-error error "></p>
+			    			<p class="error "></p>
 			  			</div> 
 			  			<!-- End name input field area -->
 				  			
@@ -247,7 +246,7 @@
 			    						name="email"
 			    						required>
 			    			</div>
-			    			<p class="email-error error "></p>
+			    			<p class="error "></p>
 			  			</div> 
 			  			<!-- End email input field area -->
 				  			
@@ -261,12 +260,12 @@
 			    							name="message"  placeholder="Message"
 			    							required></textarea>
 			    			</div>
-			   				<p class="error message-error"></p>
+			   				<p class="error"></p>
 			  			</div> 
 			  			<!-- End message textarea -->
 
 			  			<div class="form-group">
-			  				<button type="submit" class="btn btn-default btn-lg btn-send">Submit</button>
+			  				<button type="submit" class="btn btn-default btn-lg btn-send-email">Submit</button>
 			  			</div>
 
 			  			{{ csrf.field | raw}}
