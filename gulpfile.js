@@ -13,11 +13,6 @@ gulp.task('minifyCss',function(){
 	.pipe(rename('app.min.css'))
 	.pipe(gulp.dest('public/css/'));
 
-	gulp.src('public/admin/css/sb-admin.css')
-	.pipe(cleanCss({compatibility:'ie8'}))
-	.pipe(rename('app.admin.min.css'))
-	.pipe(gulp.dest('public/admin/css/'));
-	
 	console.log('css minification completed...');
 
 
@@ -34,10 +29,7 @@ gulp.task('minifyJs',function(){
 	.pipe(rename('app.min.js'))
 	.pipe(gulp.dest('public/js/'));
 
-	gulp.src('public/admin/js/scripts.js')
-	.pipe(uglify())
-	.pipe(rename('app.admin.min.js'))
-	.pipe(gulp.dest('public/admin/js/'));
+	
 
 	console.log('js uglify completed...');
 

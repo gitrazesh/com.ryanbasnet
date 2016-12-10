@@ -6,7 +6,7 @@
 <body data-spy="scroll" data-target=".navbar">
 	<div class="container-fluid">
 	<!-- Preloader -->
-	{# {% include 'includes/preloader.twig' %} #}
+	{% include 'includes/preloader.twig' %}
 
 	<!-- Navigation -->
 	{% include 'includes/navigation.twig' %}
@@ -20,6 +20,7 @@
 	<!-- Footer -->
 
 	{% include 'includes/footer.twig' %}
+	{% include 'includes/project_modal.twig' %}
 </div>
 	<!-- Bootstrap core JavaScript
 		================================================== -->
@@ -32,28 +33,12 @@
 	<script  src="js/com.ryanbasnet.js"></script>
 
 	<script>
+$(document).ready(function(){
 
-		$(document).ready(function(){
-			
-						//css preloader
-			PageAnimation.cssPreLoader();
-			
-			// //content slide in animation
-			// PageAnimation.slideAnimation();
-			
-			//Darekn navbar on scroll
-			PageAnimation.animateNavBar();
-			
-			//scroll down arrow hide/show
-			PageAnimation.animateScrollDownArrow();
-
-			//Smooth scroller
-			SmoothScroller.smoothScroll();
-
-			
-			
-		}); //End document ready function
-
+	// alert('iam ready');
+});
+		
+// document.location.href = String( document.location.href ).replace( /#/, "" );
 </script>
 </body>
 

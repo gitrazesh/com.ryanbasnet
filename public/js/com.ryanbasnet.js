@@ -7,12 +7,184 @@
 
 
 /*
-Smooth Scrolling
-
+*
+* Validator module [ validateForm ]
+*
 */
-var SmoothScroller =(function(){
+var Validator=(function(e){
+
+
+	var validateForm =function (e){
+		
+		e.preventDefault();
+		
+		var contact_form=$("#contact-form");
+		$(".contact-form").find(".error").html("");
+
+		$.ajax({
+
+			url:"/processEmail",
+			
+			data:contact_form.serialize(),
+			dataType:"json",
+			type:"post",
+			cache: false,
+			success: function(response,status,xhr){
+				
+				var statusCode = xhr.status;
+				
+				if(statusCode==200){
+					
+					$("#contact-form").find("input[type=text],input[type=email], textarea").val("");
+					
+					$("#feedback").removeClass("alert-danger");
+					
+					$("#feedback").addClass("alert-success");
+       				
+       				$("#feedback").find("p").html('Thank you, your message has been sent!');
+       				
+       				$("#feedback").removeClass("hidden");
+       			 	
+       			 	$("#feedback").fadeTo(2000, 500).slideUp(1500, function(){
+           			
+           			$("#feedback").alert('close');});
+
+				  
+				}		
+							
+		},
+		
+		error: function(xhr, textStatus, errorThrown){
+		 	
+		 	var response =xhr.responseJSON;
+
+       		var statusCode = xhr.status;
+       		
+       		if(statusCode ==422){
+       			
+       			$("#feedback").removeClass("alert-danger");
+       			$("#feedback").addClass("alert-danger");
+
+       			$("#feedback").find("p").html('Please check errors and submit again.');
+       			$("#feedback").removeClass("hidden");
+
+       			$.each(response,function(k,v){
+       				
+       				var mydom=$(".form-group-"+k);
+						mydom.find(".input-group").addClass("has-error");
+						mydom.find("p").html(v);
+				});
+
+       		}else{
+
+       			$("#feedback").addClass("alert-danger");
+       			$("#feedback").find("p").html('Sorry Something went wrong, try again');
+       		}
+    	}
+	}); //End ajax all
+		
+		return false;
+		
+	} //End checkValue fn
+
+	return{validateForm:validateForm}
+})();
+//End of Validator module
+
+
+
+
+/*
+*
+* Project module [ overlay, showProjectModal]
+*
+*/
+var Project=(function(){
+
+	var colorScheme=["#F94A4A","#1AF7DA","#F8F24D","#A677B8","#F79058"];
 	
-	var smoothScroll=function smoothScrolling(){
+	
+	var overlay=function(elem){
+
+	
+		var colorScheme=["#F94A4A","#1AF7DA","#F8F24D","#A677B8","#F79058"];
+		var colorIndex =Math.floor((Math.random() * colorScheme.length) + 1);
+		$(elem).find(".overlay").css("background-color",colorScheme[colorIndex]);
+	
+		
+	}
+	
+
+	var showProjectModal = function(elem){
+
+
+		
+		var projectId = $(elem).data('id');
+		console.log(projectId);
+
+$.getJSON( "/project/"+projectId, function( data ) {
+  						
+ 				var clientName = data.client_name;
+ 				var projectName = data.project_name;
+ 				var projectDescription = data.project_description;
+ 				var imageUrl = data.project_image_url+"/project_thumbnail.jpg";
+ 				var siteUrl = data.project_url;
+
+ 				$("#project-modal").find("h3").html(clientName);
+ 				$("#project-modal").find("#project-image").attr("src",imageUrl);
+ 				$("#project-modal").find(".project-name").html(projectName);
+ 				$("#project-modal").find(".project-description").html(projectDescription);
+
+  					
+		}).done(function(){
+
+			$("#project-modal").modal('show');
+
+		}).fail(function(){
+
+				alert("Sorry something wen wrong.");
+		});
+ 
+// });
+
+
+		// $("#project-modal").modal('show');
+
+		
+	}
+
+	return {showProjectModal:showProjectModal,
+		overlay:overlay};
+
+})();
+//End of project module
+
+
+/*
+*
+* Animation module [CssPreloader, slideAnimation, animateNavbar]
+*
+*/
+
+var Animation=(function(){
+
+	$(document).ready(function(){
+
+
+	
+
+	// cached DOM
+	var win = $(window);
+	var allMods = $(".slide-anim");
+
+	var init ={};
+	
+
+	/**
+	 * [smoothScroll smooth scrolling anchor]
+	 * @return {[void]} [add time for scrolling page content]
+	 */
+	init.smoothScroll=function(){
 	  // Make sure this.hash has a value before overriding default behavior
 	 	$(".navbar a,.scroll-down-arrow a, footer a[href='#myPage']").on('click', function(event) {
 	  		if (this.hash !== "") {
@@ -35,133 +207,66 @@ var SmoothScroller =(function(){
   		});
 	 }; //End smoothScrolling
 
-	return { smoothScroll:smoothScroll};
 
-})();
+	 /**
+	  * [animateNavBar animate navbar]
+	  * @return {[void]} [add dark bgc to navbar on page scroll down]
+	  */
+	 init.animateNavBar=function () {
+	    
+		    window.addEventListener('scroll', function(e){
+		        
+		        var distanceY = window.pageYOffset || document.documentElement.scrollTop,
+		            shrinkOn = 180;
+		        if (distanceY > shrinkOn) {
+		            
+		            $(".navbar-custom").addClass("navbar-dark-background");
+		        } else {
+		             
+		             $(".navbar-custom").removeClass("navbar-dark-background");
+		        }
+		    });
+		} //End animateNavBar
 
-/*
-*
-* Creates circle chart using jquery plugin -
-*
-*/
-
-	
-
-	//create a individual circle using circle chart plugin
-
-/*
-*
-* AJAX form submission
-*
-*/
-var FormValidator=(function(e){
 
 
-	var checkValue=function checkValue(e){
-		e.preventDefault();
-		// alert('check');
-		//cached dom
-		var contact_form=$("#contact-form");
-		$(".input-group").removeClass("warning-border");
-		$(".contact-form p").html("");
-		// console.log(JSON.stringify(contact_form.serialize()));
-		$.ajax({
+		/**
+		 * [animateScrollDownArrow animate scroll down arrow in landing page]
+		 * @return {[type]} [description]
+		 */
+		init.animateScrollDownArrow=function(){
 
-			url:"/processEmail",
-			
-			data:contact_form.serialize(),
-			dataType:"json",
-			type:"post",
-			cache: false,
-			success: function(response,status,jqXHR){
-				console.log(status);
-				console.dir(response);
-
-				// if(response.error===true){
-					
-				// 	// var errors=response.errors;
-					
-				// 	// $.each(errors, function(k, v){
-						
-				// 	// 	var mydom=$(".form-group-"+k);
-				// 	// 	mydom.find(".input-group").addClass("warning-border");
-				// 	// 	mydom.find("p").html(v);
-				// 	// });//End each function
-				// }else{
-					
-				// 	alert('Sorry');
-				// 	// var alertMessage=response.message;
-				// 	// $("#contact-form").find("input[type=text],input[type=email], textarea").val("");
-				// 	// $("#contact-form").before(alertMessage);
-				// 	//  $("#alert").fadeTo(2000, 500).slideUp(1500, function(){
-    //  //           		$("#alert").alert('close');});
-
-				//  } // end else
-		},
-		 error: function(xhr, textStatus, errorThrown){
-		 	console.dir(xhr);
-		 	console.dir(textStatus);
-		 	console.dir(errorThrown);
-		 	console.dir(xhr.responseJSON);
-       alert('request failed');
-    }
-		}); //End ajax all
+			win.scroll(function(){
+				var sctop=win.scrollTop();
 		
-		return false;
+		if(sctop>200){
+
+			$(".scroll-down-arrow").hide();
+		}
+		else{
+
+			$(".scroll-down-arrow").show();
+		}
+
+    });
+		}
+
+
 		
 
-	} //End checkValue fn
-
-	return{checkValue:checkValue}
-})();
-
-/*
-*
-* Project item animation on hover
-*
-*/
-var ProjectItemAnimator=(function(){
-
-	var colorScheme=["#F94A4A","#1AF7DA","#F8F24D","#A677B8","#F79058"];
-	
-	$(".outer").hover(function(){
-		
-		var colorIndex =Math.floor((Math.random() * colorScheme.length) + 1);
-		$(this).find(".overlay").css("background-color",colorScheme[colorIndex]);
-		
-	},
-	function(){
-		$(this).find(".overlay").css("background-color","none");
-
-	});
-})();
-
-
-/*
-*
-*Css preloader,slide animation,navigation bar animation
-*
-*/
-
-var PageAnimation=(function(){
-
-		// cached DOM
-			var win = $(window);
-			var allMods = $(".slide-anim");
-
-		var cssPreLoader=function(){
+		init.cssPreLoader=function(){
 
 
 			setTimeout(function(){
-        		$('body').addClass('loaded');
+				
+        		$("body").addClass('loaded');
        			 $('h1').css('color','#222222');
-    		}, 100);
+       			 // alert('iam ready inside');
+    		}, 300);
+
 		};
 
-		var slideAnimation=function(){
-
-
-			
+		init.slideAnimation=function(){
 
 			// Already visible modules
 			allMods.each(function(i, element) {
@@ -186,48 +291,16 @@ var PageAnimation=(function(){
 		};
 
 
-		var animateNavBar=function animateNavBar() {
-	    
-		    window.addEventListener('scroll', function(e){
-		        
-		        var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-		            shrinkOn = 180;
-		        if (distanceY > shrinkOn) {
-		            
-		            $(".navbar-custom").addClass("navbar-dark-background");
-		        } else {
-		             
-		             $(".navbar-custom").removeClass("navbar-dark-background");
-		        }
-		    });
-		} //End animateHeader
-
-
-		var animateScrollDownArrow=function(){
-
-			win.scroll(function(){
-				var sctop=win.scrollTop();
-		
-		if(sctop>200){
-
-			$(".scroll-down-arrow").hide();
-		}
-		else{
-
-			$(".scroll-down-arrow").show();
-		}
-
-    });
-		}
-
-		return{
-
-			cssPreLoader:cssPreLoader,
-			animateNavBar:animateNavBar,
-			slideAnimation:slideAnimation,
-			animateScrollDownArrow:animateScrollDownArrow
 		
 
-	};
+
+			init.smoothScroll();
+			init.animateNavBar();
+			init.animateScrollDownArrow();
+			init.cssPreLoader();
+
+			init.slideAnimation();
+
+		});
 
 	})();

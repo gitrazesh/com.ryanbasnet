@@ -17,7 +17,8 @@
         "slim/flash": "^0.1.0",
         "respect/validation": "^1.1",
         "vlucas/phpdotenv": "^2.4",
-        "slim/csrf": "^0.7.0"
+        "slim/csrf": "^0.7.0",
+        "typo3/swiftmailer": "^5.4"
         
     },
 

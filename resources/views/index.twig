@@ -163,13 +163,13 @@
            
                 	<div class="panel panel-default panel-project slide-anim">
                 		<div class="panel-body  slide">
-                			<div class="outer">
+                			<div class="outer" onmouseover="Project.overlay(this)">
                 				<img class="gallery-item thumbnail" id="1" src="{{ project.project_image_url}}/project_thumbnail.jpg" alt="">
 
 								<!-- over-lay -->
                     			<div class="overlay"></div>
                     			<div class="project-link">
-                    				<button type="button" class="btn btn-default project">View Project</button>
+                    				<a href="javascript:void(0)" data-id={{project.project_id}} class="btn btn-default project" onclick="return Project.showProjectModal(this)">View Project</a>
                     			</div>
                     			<!-- End over-lay -->
                 			</div>
@@ -179,8 +179,8 @@
             		
                 		<div class="panel-footer text-center">
                 
-                			<h5>{{project.client_name}}</h5>
-                			<p>{{project.project_name}}</p>
+                			<h5><a href="project_project_url">{{project.client_name}}</h5></a>
+                			<p>{{project.project_category}}</p>
                 		</div>
                 		<!-- End panel-footer -->
                 	</div>
@@ -205,16 +205,21 @@
 		
 	<!-- row -->
 	<div class="row">
-		<div class="col-sm-8 col-sm-offset-2 contact-form-container slide-anim">
+		<div class="col-sm-8 col-sm-offset-2 contact-form-container">
 			<!-- row -->
 			<div class="row">
 				 <!-- Contact-form -->
 				<div class="col-sm-10 col-sm-offset-1 contact-form">
+					<!-- contact-form feedback -->
+					<div class="alert alert-dismissible text-center hidden" id="feedback">
+  						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  						<p></p>
+					</div>
 					<form role="form" 
 						  id="contact-form"
 						  method="post"
 						  
-						  onsubmit="FormValidator.checkValue(event)">
+						  onsubmit="Validator.validateForm(event)">
 				  		
 				  		<!-- Name input field area -->
 			  			<div class="form-group form-group-name">
@@ -249,7 +254,7 @@
 			  			<!-- Message textarea -->
 			  			<div class="form-group form-group-message">
 			    			<label for="message"></label>
-							<div class="input-group">
+							<div class="input-group ">
 			     				<span class = "input-group-addon fa fa-comment"></span>
 			    				<textarea class="form-control"
 			    							id="message" rows="5"
@@ -263,6 +268,8 @@
 			  			<div class="form-group">
 			  				<button type="submit" class="btn btn-default btn-lg btn-send">Submit</button>
 			  			</div>
+
+			  			{{ csrf.field | raw}}
 					</form>
 				</div> 
 				<!-- End contact-form -->

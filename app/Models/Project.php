@@ -31,6 +31,16 @@ class Project extends Model {
 	}
 
 
+	public function find($id){
+
+		$statement = $this->connection->prepare("SELECT * FROM projects where project_id=:project_id");
+
+		$statement->execute(array(':project_id'=>$id));
+		$project = $statement->fetch(PDO::FETCH_ASSOC);	
+		return $project;
+			
+	}
+
 }
 
  ?>

@@ -7,13 +7,17 @@
  * @Last Modified time: 2016-12-05 19:26:36
  */
 
+session_start();
 
 date_default_timezone_set('Australia/Sydney');
+
+ini_set('display_errors', 'On');
+error_reporting(E_ALL);
 
 require __DIR__ . '/../vendor/autoload.php';
 
 
-/** Test */
+
 $dotenv = new Dotenv\Dotenv(__DIR__.'/../');
 $dotenv->load();
 
@@ -58,9 +62,9 @@ return \App\Services\DbConnection::getConnection();
 
 /** csrf middleware **/
 
-// $container['csrf'] = function ($container) {
-//     return new \Slim\Csrf\Guard;
-// };
+$container['csrf'] = function ($container) {
+    return new \Slim\Csrf\Guard;
+};
 
 /** Flash Message */
 $container['flash'] = function ($container){
@@ -137,29 +141,36 @@ $connection = $container->connection;
 return new \App\Models\Skill($connection);
  };
 
+
+$app->add(new \App\Middleware\CsrfMiddleware($container));
+// $app->add($container->get('csrf'));
+
+
 /**
  * Error Handler
  */
 
-//404
-// $container['notFoundHandler'] = function ($container) {
+/** 400**/ 
+$container['notFoundHandler'] = function ($container) {
  
-//  	return function ($request, $response) use ($container) {
+ 	return function ($request, $response) use ($container) {
 
-//  		$container->view->render($response,'errors/404error.twig',['errorStatusCode'=>'404','errorStatusMessage'=>'Page Not Found']);
+ 		
  
-//   		return $response->withStatus(404);          
-// 		};
-// };
+  		return $response->withRedirect($container->router->pathFor('home'));
+        
+		};
+};
 
-// $container['errorHandler'] = function ($container) {
-//     return function ($request, $response, $exception) use ($container) {
 
-//         $container->view->render($response,'errors/505error.twig',['errorStatusCode'=>'500','errorStatusMessage'=>'Sorry, something went wrong.']);
- 
-//   		return $response->withStatus(404); 
-//     };
-// };
+/** 500 **/ 
+$container['errorHandler'] = function ($container) {
+    return function ($request, $response, $exception) use ($container) {
+
+        return $response->withRedirect($container->router->pathFor('home'));
+        
+    };
+};
 
 
 
