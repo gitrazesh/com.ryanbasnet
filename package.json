@@ -10,7 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.2.1",
     "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.0.0",
     "uglify": "^0.1.5"
   }
 }

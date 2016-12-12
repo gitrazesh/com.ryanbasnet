@@ -14,12 +14,13 @@
 const Validator=(function(e){
 
 
-	let validateForm =function (e){
+	var validateForm =function (e){
 		
 		e.preventDefault();
 		
-		const contact_form=$("#contact-form");
-		const feedback=$("#feedback");
+		const contact_form		=	$("#contact-form");
+		const feedback 			=	$("#feedback");
+		const feedbackText 		= 	feedback.find("p")
 		$(".contact-form").find(".error").html("");
 
 
@@ -44,7 +45,7 @@ const Validator=(function(e){
 					
 					feedback.addClass("alert-success");
        				
-       				feedback.find("p").html('Thank you, your message has been sent!');
+       				feedbackText.html('Thank you, your message has been sent!');
        				
        				feedback.removeClass("hidden");
        			 	
@@ -69,7 +70,7 @@ const Validator=(function(e){
        			feedback.removeClass("alert-danger");
        			feedback.addClass("alert-danger");
 
-       			feedback.find("p").html('Please check errors and submit again.');
+       			feedbackText.html('Please check errors and submit again.');
        			feedback.removeClass("hidden");
 
        			$.each(response,function(key,value){
@@ -81,8 +82,8 @@ const Validator=(function(e){
 
        		}else{
 
-       			$("#feedback").addClass("alert-danger");
-       			$("#feedback").find("p").html('Sorry Something went wrong, try again.');
+       			feedback.addClass("alert-danger");
+       			feedbackText.html('Sorry Something went wrong, try again.');
        		}
     	}
 	}); //End ajax all
@@ -91,7 +92,7 @@ const Validator=(function(e){
 		
 	} //End checkValue fn
 
-	return{validateForm:validateForm}
+	return{ validateForm:validateForm }
 })();
 //End of Validator module
 
@@ -107,19 +108,19 @@ const Project=(function(){
 	const colorScheme=["#F94A4A","#1AF7DA","#F8F24D","#A677B8","#F79058"];
 	
 	//overlay project on hover
-	let overlay=function(elem){
+	var overlay=function(elem){
 
-		let colorIndex =Math.floor((Math.random() * colorScheme.length) + 1);
+		var colorIndex =Math.floor((Math.random() * colorScheme.length) + 1);
 		$(elem).find(".overlay").css("background-color",colorScheme[colorIndex]);
 	
 		
 	}
 	
 	//show project modal on view button click 
-	let showProjectModal = function(elem){
+	var showProjectModal = function(elem){
 
 
-		let projectId 				= 	$(elem).data('id');
+		var projectId 				= 	$(elem).data('id');
 		const projectModal 			= 	$("#project-modal")
 		const projectModalTile 		= 	projectModal.find("#project-modal-title");
 		const projectName 			= 	projectModal.find(".project-name");
@@ -134,15 +135,13 @@ const Project=(function(){
 		//get project properties 
 		
 		$.getJSON( "/project/"+projectId, function( data ) {
-
-				console.dir(data);
   						
- 				let client = data.client_name;
- 				let name = data.project_name;
- 				let category = data.project_category;
- 				let description = data.project_description;
- 				let imageUrl = data.project_image_url+"/project_full_screen.jpg";
- 				let siteUrl = data.project_site_url;
+ 				var client = data.client_name;
+ 				var name = data.project_name;
+ 				var category = data.project_category;
+ 				var description = data.project_description;
+ 				var imageUrl = data.project_image_url+"/project_full_screen.jpg";
+ 				var siteUrl = data.project_site_url;
 
  				projectName.html(name);
  				projectCategory.html(category);
@@ -158,7 +157,7 @@ const Project=(function(){
 
 		}).fail(function(){
 
-				alert("Sorry something went wrong.");
+			alert("Sorry something went wrong.");
 		});
  
 	}
@@ -181,141 +180,143 @@ const Project=(function(){
 *
 */
 
-var Animation=(function(){
+const Animation=(function(){
 
 	$(document).ready(function(){
 
+		// cached DOM
+		const win = $(window);
+		const allMods = $(".slide-anim");
 
-	
-
-	// cached DOM
-	var win = $(window);
-	var allMods = $(".slide-anim");
-
-	var init ={};
-	
-
-	/**
-	 * [smoothScroll smooth scrolling anchor]
-	 * @return {[void]} [add time for scrolling page content]
-	 */
-	init.smoothScroll=function(){
-	  // Make sure this.hash has a value before overriding default behavior
-	 	$(".navbar a,.scroll-down-arrow a, footer a[href='#myPage']").on('click', function(event) {
-	  		if (this.hash !== "") {
-	    		// Prevent default anchor click behavior
-	   			 event.preventDefault();
-
-	    		// Store hash
-	    		var hash = this.hash;
-
-			    // Using jQuery's animate() method to add smooth page scroll
-			    // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-			    $('html, body').animate({
-			      scrollTop: $(hash).offset().top
-			    }, 900, function(){
-
-			      // Add hash (#) to URL when done scrolling (default click behavior)
-			      window.location.hash = hash;
-			      });
-	    	} // End if
-  		});
-	 }; //End smoothScrolling
-
-
-	 /**
-	  * [animateNavBar animate navbar]
-	  * @return {[void]} [add dark bgc to navbar on page scroll down]
-	  */
-	 init.animateNavBar=function () {
-	    
-		    window.addEventListener('scroll', function(e){
-		        
-		        var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-		            shrinkOn = 180;
-		        if (distanceY > shrinkOn) {
-		            
-		            $(".navbar-custom").addClass("navbar-dark-background");
-		        } else {
-		             
-		             $(".navbar-custom").removeClass("navbar-dark-background");
-		        }
-		    });
-		} //End animateNavBar
-
-
+		const init ={};
+		
 
 		/**
-		 * [animateScrollDownArrow animate scroll down arrow in landing page]
-		 * @return {[type]} [description]
+		 * [smoothScroll smooth scrolling anchor]
+		 * @return {[void]} [add time for scrolling page content]
 		 */
-		init.animateScrollDownArrow=function(){
+		init.smoothScroll=function(){
+		  // Make sure this.hash has a value before overriding default behavior
+		 	$(".navbar a,.scroll-down-arrow a, footer a[href='#myPage']").on('click', function(event) {
+		  		if (this.hash !== "") {
+		    		// Prevent default anchor click behavior
+		   			 event.preventDefault();
 
-			win.scroll(function(){
-				var sctop=win.scrollTop();
+		    		// Store hash
+		    		var hash = this.hash;
+
+				    // Using jQuery's animate() method to add smooth page scroll
+				    // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+				    $('html, body').animate({
+				      scrollTop: $(hash).offset().top
+				    }, 900, function(){
+
+				      // Add hash (#) to URL when done scrolling (default click behavior)
+				      window.location.hash = hash;
+				      });
+		    	} // End if
+	  		});
+		 }; //End smoothScrolling
+
+
+		 /**
+		  * [animateNavBar animate navbar]
+		  * @return {[void]} [add dark bgc to navbar on page scroll down]
+		  */
+		 init.animateNavBar=function () {
+		    
+			    window.addEventListener('scroll', function(e){
+			        
+			        var distanceY = window.pageYOffset || document.documentElement.scrollTop,
+			            shrinkOn = 180;
+			        if (distanceY > shrinkOn) {
+			            
+			            $(".navbar-custom").addClass("navbar-dark-background");
+			        } else {
+			             
+			             $(".navbar-custom").removeClass("navbar-dark-background");
+			        }
+			    });
+			} //End animateNavBar
+
+
+
+			/**
+			 * [animateScrollDownArrow animate scroll down arrow in landing page]
+			 * @return {[type]} [description]
+			 */
+			init.animateScrollDownArrow=function(){
+
+				win.scroll(function(){
+					var sctop=win.scrollTop();
+			
+					if(sctop>200){
+
+						$(".scroll-down-arrow").hide();
+					
+					}else{
+
+						$(".scroll-down-arrow").show();
+					}
+
+	    		});
+			}
+
+
+			/**
+			 * [cssPreLoader csss preloader]
+			 * @return {[type]} [loads preloader till documents ready]
+			 */
+			init.cssPreLoader=function(){
+
+
+				setTimeout(function(){
+					
+	        		$("body").addClass('loaded');
+	       			 $('h1').css('color','#222222');
+	       		
+	    		}, 400);
+
+			};
+
+			/**
+			 * [slideAnimation slide in project item]
+			 * @return {[void]} [add slide-in class for slide-in effect]
+			 */
+			init.slideAnimation=function(){
+
+				// Already visible modules
+				allMods.each(function(i,element) {
+
+			  		var elem = $(element);
+			  		if (elem.visible(true)) {
+			    	
+			    	elem.addClass("already-visible"); 
+			  		} 
+				});
+
+				win.scroll(function(event) {
+
+			  		allMods.each(function(i, element) {
+			    		var elem = $(element);
+			    		if (elem.visible(true)) {
+			      		
+			      		elem.addClass("slide-in"); 
+			    		} 
+			  		});
+			 	});
+			};
+
+
+			
+		//initialise animations
 		
-		if(sctop>200){
+		init.cssPreLoader();
+		init.smoothScroll();
+		init.animateNavBar();
+		init.animateScrollDownArrow();
+		init.slideAnimation();
 
-			$(".scroll-down-arrow").hide();
-		}
-		else{
+	});//end of document ready fn
 
-			$(".scroll-down-arrow").show();
-		}
-
-    });
-		}
-
-
-		
-
-		init.cssPreLoader=function(){
-
-
-			setTimeout(function(){
-				
-        		$("body").addClass('loaded');
-       			 $('h1').css('color','#222222');
-       			 // alert('iam ready inside');
-    		}, 400);
-
-		};
-
-		init.slideAnimation=function(){
-
-			// Already visible modules
-			allMods.each(function(i, element) {
-
-		  		var element = $(element);
-		  		if (element.visible(true)) {
-		    	
-		    	element.addClass("already-visible"); 
-		  		} 
-			});
-
-			win.scroll(function(event) {
-
-		  		allMods.each(function(i, element) {
-		    		var element = $(element);
-		    		if (element.visible(true)) {
-		      		
-		      		element.addClass("slide-in"); 
-		    		} 
-		  		});
-		 	});
-		};
-
-
-		
-
-
-			init.smoothScroll();
-			init.animateNavBar();
-			init.animateScrollDownArrow();
-			init.cssPreLoader();
-
-			init.slideAnimation();
-
-		});
-
-	})();
+})();

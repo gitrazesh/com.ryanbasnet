@@ -8,7 +8,7 @@ var gulp 			= require('gulp');
 gulp.task('minifyCss',function(){
 
 
-	gulp.src('public/css/style.css')
+	gulp.src('public/css/com.ryanbasnet.css')
 	.pipe(cleanCss({compatibility:'ie8'}))
 	.pipe(rename('app.min.css'))
 	.pipe(gulp.dest('public/css/'));
@@ -24,7 +24,7 @@ gulp.task('minifyJs',function(){
 
 
 	
-	gulp.src('public/js/scripts.js')
+	gulp.src('public/js/com.ryanbasnet.js')
 	.pipe(uglify())
 	.pipe(rename('app.min.js'))
 	.pipe(gulp.dest('public/js/'));

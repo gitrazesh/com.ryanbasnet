@@ -12,8 +12,8 @@
 /* ----------------------------------------*/
 
 /* COLOR PALETTE */
-/* DEEP : #F27360 */
-/* Ligh Black : #485868 */
+/* Dark Nickel : #282f38*/
+/* Ligh Nickel: #485868 */
 /* YELLOW: #fccc4b */
 /* GRAY: #9A9A9A */
 /* Red : #ED5A5A */
@@ -107,19 +107,6 @@ h2:after{
 
 }
 
-h2:after,
-h2:before{
-	
-	content: "";
-	position: relative;
-	bottom:10px;
-	display: inline-block;
-	vertical-align: center;
-	background-color:#282f38;
-	width: 100px;
-	height: 3px;
-
-}
 
 
 h3{
@@ -701,8 +688,9 @@ z-index: 99;
 	display:inline-block;
 	width:40px;
 	height:40px;
-	line-height: 40px;
+	line-height: 36px;
 	text-align: center;
+	border:2px solid transparent
 
 }
 
@@ -710,6 +698,7 @@ z-index: 99;
 
 	border:2px solid #FFF;
 	border-radius: 50%;
+
 }
 
 .fa-github:hover{
@@ -917,6 +906,7 @@ z-index: 99;
 
 	background-color: #f5f5f5;
 	padding:25px 0px;
+	overflow:hidden;
 }
 
 
@@ -1324,7 +1314,7 @@ span.input-group-addon{
 
 
 @media only screen and (max-width: 766px) {
-.collapsing, .in {background-color: #353E3D;
+.collapsing, .in {background-color: #282f38;
 }
 .contact-form-container{
 
@@ -1334,7 +1324,7 @@ span.input-group-addon{
 }
 
 .jumbotron .hero-content h1{
-	margin-top:22vh;
+	margin-top:8vh;
 	font-weight:600;
 }
 	 
@@ -1429,6 +1419,20 @@ span.input-group-addon{
 
 /* Small Devices, Tablets */
 @media only screen and (min-width : 768px) {
+
+h2:after,
+h2:before{
+	
+	content: "";
+	position: relative;
+	bottom:10px;
+	display: inline-block;
+	vertical-align: center;
+	background-color:#282f38;
+	width: 100px;
+	height: 3px;
+
+}
 
 .hex-container{
 
