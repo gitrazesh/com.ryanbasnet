@@ -12,9 +12,10 @@
 /* ----------------------------------------*/
 
 /* COLOR PALETTE */
-/*DEEP ORANGE: #F27360 */
-/*PALE BLUE: #485868 */
-/*GRAY: #6E6F71 */
+/* DEEP : #F27360 */
+/* Ligh Black : #485868 */
+/* YELLOW: #fccc4b */
+/* GRAY: #9A9A9A */
 /* Red : #ED5A5A */
 /* Green : #5FCF80; */
 
@@ -149,7 +150,7 @@ h5{
 	
 }
 
-p{
+p,.project-description{
 
 	color:#9A9A9A;
 	font-size: 14px;
@@ -233,6 +234,19 @@ p{
 	background-color:#E3B332;
 	color:#FFF;
 
+}
+
+.btn-visit-site{
+
+	color:#E3B332;
+	background-color: #FFF;
+	border:2px #E3B332 solid;
+}
+
+.btn-visit-site:focus,.btn-visit-site:hover{
+
+	background-color:#E3B332;
+	color: #FFF;
 }
 
 
@@ -359,14 +373,14 @@ z-index: 99;
 .navbar .navbar-right>.active>a:hover{
 
 	background-color: transparent;
-	color:#F27360;
+	color:#fccc4b;
 
 }
 
 
 .navbar .navbar-right>.active>a{
 	background-color: transparent;
-	color:#F27360;
+	color:#fccc4b;
 }
 
 .navbar-custom .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
@@ -837,12 +851,12 @@ z-index: 99;
 
 .scss-bgc{
 	
-	background-color: pink;
+	background-color: #c6538c;
 }
 
 .scss-border{
 	
-	border-color: pink;
+	border-color: #c6538c;
 }
 
 .html5-bgc{
@@ -948,7 +962,8 @@ z-index: 99;
 
 .panel-default {
 
-	border:none;
+	border-width:0px;
+	box-shadow: none;
 
 }
 
@@ -1048,6 +1063,10 @@ z-index: 99;
 	text-decoration: none;
 }
 
+#project-modal .modal-content{
+
+	border-radius:0px;
+}
 #project-modal .modal-header a.close{
 
 	font-size:35px !important;
@@ -1055,6 +1074,11 @@ z-index: 99;
 	opacity:1; !important;
 }
 
+#project-modal .modal-header a.close:hover{
+
+	color:#ED5A5A;
+	opacity:1; !important;
+}
 
 #project-modal .modal-body{
 
@@ -1088,8 +1112,7 @@ z-index: 99;
 .contact-form-container{
 	
 	height: auto;
-	margin-top:50px;
-	margin-bottom: 50px;
+	margin-bottom: 20px;
 }
 
 
@@ -1311,7 +1334,7 @@ span.input-group-addon{
 }
 
 .jumbotron .hero-content h1{
-	margin-top:25vh;
+	margin-top:22vh;
 	font-weight:600;
 }
 	 

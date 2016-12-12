@@ -11,16 +11,19 @@
 * Validator module [ validateForm ]
 *
 */
-var Validator=(function(e){
+const Validator=(function(e){
 
 
-	var validateForm =function (e){
+	let validateForm =function (e){
 		
 		e.preventDefault();
 		
-		var contact_form=$("#contact-form");
+		const contact_form=$("#contact-form");
+		const feedback=$("#feedback");
 		$(".contact-form").find(".error").html("");
 
+
+		//send ajax request
 		$.ajax({
 
 			url:"/processEmail",
@@ -35,19 +38,19 @@ var Validator=(function(e){
 				
 				if(statusCode==200){
 					
-					$("#contact-form").find("input[type=text],input[type=email], textarea").val("");
+					contact_form.find("input[type=text],input[type=email], textarea").val("");
 					
-					$("#feedback").removeClass("alert-danger");
+					feedback.removeClass("alert-danger");
 					
-					$("#feedback").addClass("alert-success");
+					feedback.addClass("alert-success");
        				
-       				$("#feedback").find("p").html('Thank you, your message has been sent!');
+       				feedback.find("p").html('Thank you, your message has been sent!');
        				
-       				$("#feedback").removeClass("hidden");
+       				feedback.removeClass("hidden");
        			 	
-       			 	$("#feedback").fadeTo(2000, 500).slideUp(1500, function(){
+       			 	feedback.fadeTo(2000, 500).slideUp(1500, function(){
            			
-           			$("#feedback").alert('close');});
+           			feedback.alert('close');});
 
 				  
 				}		
@@ -60,25 +63,26 @@ var Validator=(function(e){
 
        		var statusCode = xhr.status;
        		
+       		//uprocessable entity 
        		if(statusCode ==422){
        			
-       			$("#feedback").removeClass("alert-danger");
-       			$("#feedback").addClass("alert-danger");
+       			feedback.removeClass("alert-danger");
+       			feedback.addClass("alert-danger");
 
-       			$("#feedback").find("p").html('Please check errors and submit again.');
-       			$("#feedback").removeClass("hidden");
+       			feedback.find("p").html('Please check errors and submit again.');
+       			feedback.removeClass("hidden");
 
-       			$.each(response,function(k,v){
+       			$.each(response,function(key,value){
        				
-       				var mydom=$(".form-group-"+k);
+       				var mydom=$(".form-group-"+key);
 						mydom.find(".input-group").addClass("has-error");
-						mydom.find("p").html(v);
+						mydom.find("p").html(value);
 				});
 
        		}else{
 
        			$("#feedback").addClass("alert-danger");
-       			$("#feedback").find("p").html('Sorry Something went wrong, try again');
+       			$("#feedback").find("p").html('Sorry Something went wrong, try again.');
        		}
     	}
 	}); //End ajax all
@@ -93,68 +97,79 @@ var Validator=(function(e){
 
 
 
-
 /*
 *
 * Project module [ overlay, showProjectModal]
 *
 */
-var Project=(function(){
+const Project=(function(){
 
-	var colorScheme=["#F94A4A","#1AF7DA","#F8F24D","#A677B8","#F79058"];
+	const colorScheme=["#F94A4A","#1AF7DA","#F8F24D","#A677B8","#F79058"];
 	
-	
-	var overlay=function(elem){
+	//overlay project on hover
+	let overlay=function(elem){
 
-	
-		var colorScheme=["#F94A4A","#1AF7DA","#F8F24D","#A677B8","#F79058"];
-		var colorIndex =Math.floor((Math.random() * colorScheme.length) + 1);
+		let colorIndex =Math.floor((Math.random() * colorScheme.length) + 1);
 		$(elem).find(".overlay").css("background-color",colorScheme[colorIndex]);
 	
 		
 	}
 	
+	//show project modal on view button click 
+	let showProjectModal = function(elem){
 
-	var showProjectModal = function(elem){
 
+		let projectId 				= 	$(elem).data('id');
+		const projectModal 			= 	$("#project-modal")
+		const projectModalTile 		= 	projectModal.find("#project-modal-title");
+		const projectName 			= 	projectModal.find(".project-name");
+		const projectCategory 		= 	projectModal.find(".project-category");
+		const projectDescription 	= 	projectModal.find(".project-description");
+		const projectUrl 			= 	projectModal.find(".project-url");
+		const projectImage 			=	projectModal.find("#project-image");
+		
+		
 
 		
-		var projectId = $(elem).data('id');
-		console.log(projectId);
+		//get project properties 
+		
+		$.getJSON( "/project/"+projectId, function( data ) {
 
-$.getJSON( "/project/"+projectId, function( data ) {
+				console.dir(data);
   						
- 				var clientName = data.client_name;
- 				var projectName = data.project_name;
- 				var projectDescription = data.project_description;
- 				var imageUrl = data.project_image_url+"/project_thumbnail.jpg";
- 				var siteUrl = data.project_url;
+ 				let client = data.client_name;
+ 				let name = data.project_name;
+ 				let category = data.project_category;
+ 				let description = data.project_description;
+ 				let imageUrl = data.project_image_url+"/project_full_screen.jpg";
+ 				let siteUrl = data.project_site_url;
 
- 				$("#project-modal").find("h3").html(clientName);
- 				$("#project-modal").find("#project-image").attr("src",imageUrl);
- 				$("#project-modal").find(".project-name").html(projectName);
- 				$("#project-modal").find(".project-description").html(projectDescription);
+ 				projectName.html(name);
+ 				projectCategory.html(category);
+ 				projectImage.attr("src",imageUrl);
+ 				projectDescription.html(description);
+ 				projectUrl.attr("href",siteUrl);
+
 
   					
 		}).done(function(){
 
-			$("#project-modal").modal('show');
+			projectModal.modal('show');
 
 		}).fail(function(){
 
-				alert("Sorry something wen wrong.");
+				alert("Sorry something went wrong.");
 		});
  
-// });
-
-
-		// $("#project-modal").modal('show');
-
-		
 	}
 
-	return {showProjectModal:showProjectModal,
-		overlay:overlay};
+	return {
+		
+		showProjectModal : showProjectModal,
+
+		overlay  : overlay
+		
+		};
 
 })();
 //End of project module
@@ -262,7 +277,7 @@ var Animation=(function(){
         		$("body").addClass('loaded');
        			 $('h1').css('color','#222222');
        			 // alert('iam ready inside');
-    		}, 300);
+    		}, 400);
 
 		};
 

@@ -20,7 +20,11 @@ public function __construct(){
 }
 
 
-
+/**
+ * [sendEmail perocess email]
+ * @param  [array] $data [json email data]
+ * @return [integer]       [status code]
+ */
 public function sendEmail($data){
 
 
