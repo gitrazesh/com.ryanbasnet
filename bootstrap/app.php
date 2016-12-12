@@ -167,7 +167,9 @@ $container['notFoundHandler'] = function ($container) {
 $container['errorHandler'] = function ($container) {
     return function ($request, $response, $exception) use ($container) {
 
-        return $response->withRedirect($container->router->pathFor('home'));
+        $container->view->render($response,'errors/505error.twig',['errorStatusCode'=>'500','errorStatusMessage'=>'Sorry, something went wrong.']);
+ 
+  		return $response->withStatus(500); 
         
     };
 };

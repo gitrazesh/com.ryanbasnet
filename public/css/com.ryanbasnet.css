@@ -406,7 +406,7 @@ z-index: 99;
 	
 	display:inline-block;
 	list-style-type: none;
-	padding:0 50px;
+	padding:0 30px;
 
 }
 
@@ -1221,9 +1221,26 @@ span.input-group-addon{
 }
 
 
+.error-container{
 
+	min-height:48vh;
+	background-color: #282f38;
+	overflow: auto;
+}
 
+span.error-code{
 
+	font-size: 53px;
+	font-weight: 800;
+}
+
+.error-container h3{
+	
+	margin-top:180px;
+	color: #FFF;
+
+	
+}
 
 /* ----------------------------------------*/
 /* ---->>>ANIMATION,ERROR AND MISC <<<-----*/
@@ -1341,6 +1358,9 @@ span.input-group-addon{
 	margin-left:72px;
 }
 
+.error-container{
+
+	min-height:48vh;
 
 }
 /* Custom, iPhone Retina */ 
@@ -1463,7 +1483,9 @@ h2:before{
 	
 }
 
+.error-container{
 
+	min-height:68vh;
 		
 }
 

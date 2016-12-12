@@ -1,0 +1,12 @@
+
+{% extends 'layout.twig' %}
+{% block main %}
+	<div class="row ">
+		<div class="col-md-12 error-container">
+			<h3 class="text-center"><span id='error-code'>{{errorStatusCode}}&nbsp;Internal Server Error</span></h3>
+				<p>{{errorStatusMessage}}</p>
+			
+			
+		</div>
+	</div>
+{% endblock main %}
