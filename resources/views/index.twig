@@ -10,8 +10,8 @@
 			<div class="row hero-content">
 				<div class="col-sm-6 col-sm-offset-3 text-center">
 					<h1>I'm Ryan.</h1>
-					<p>A web developer based on SYDNEY.
-						I love building simple and elegant website that meets your personal purpose or business solution.
+					<p>A web developer based on SYDNEY. I enjoy building clean, minimalist and effective web application.
+						If you would like to discuss your ideas for your business web presence or an employer looking to hire, get in touch with me.
 					</p>
 				</div>
 			</div> 
@@ -28,7 +28,7 @@
 				<!-- social-links -->
 				<ul class="home-social-links">
     				
-    				<li >
+    				<li>
       					<a href="https://github.com/ryanbasnet" target="_blank">
       						<i class="fa fa-github fa-lg home-social-icon" aria-hidden="true"></i>
       					</a>
@@ -153,17 +153,18 @@
 		<h2>Work</h2>
 	</div>
 		
-	<p class="content">Check out some of my projects.</p>
+	<p class="content">Feel free to browse through my recent work.
+		Have you got ideas and need help in development ? Then let's collaborate.</p>
 	<div class="row work">
-        <div class="col-sm-10 col-sm-offset-1 image-container">  
+        <div class="col-sm-8 col-sm-offset-2 image-container">  
              <!-- image container-->   
             <div id="grid" data-columns>
             		                    
             	{% for project in projects %}
            
                 	<div class="panel panel-default panel-project slide-anim">
-                		<div class="panel-body  slide">
-                			<div class="outer" onmouseover="Project.overlay(this)">
+                		<div class="panel-body slide">
+                			<div class="outer">
                 				<img class="gallery-item thumbnail" id="1" src="{{ project.project_image_url}}/project_thumbnail.jpg" alt="">
 
 								<!-- over-lay -->
@@ -171,18 +172,12 @@
                     			<div class="project-link">
                     				<a href="javascript:void(0)" data-id={{project.project_id}} class="btn btn-default btn-view-project" onclick="return Project.showProjectModal(this)">View Project</a>
                     			</div>
+                    			<h5 class="project-name">{{project.client_name}}</h5>
                     			<!-- End over-lay -->
                 			</div>
                 			<!-- End outer slid-anim -->
             			</div>
             			<!-- End panel-body -->
-            		
-                		<div class="panel-footer text-center">
-                
-                			<h5><a href="project_project_url">{{project.client_name}}</h5></a>
-                			<p>{{project.project_category}}</p>
-                		</div>
-                		<!-- End panel-footer -->
                 	</div>
                 	<!-- End panel-project -->
 				{% endfor %}

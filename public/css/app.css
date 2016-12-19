@@ -75,7 +75,7 @@ h1{
 	font-size: 50px;
 	letter-spacing: 1.5px;
 	line-height: 53px;
-	margin-top:35%;
+	margin-top:15vh;
 	margin-bottom: 20px;
 	font-weight: 800;
 
@@ -192,8 +192,12 @@ p,.project-description{
 	
 	
 	background-color: transparent;
-	color:#282f38;
-	border-color: #282f38;
+	color:#FFF !important;
+	border-color: #FFF !important;
+	transition:transform 0.4s ease;
+	top:0;
+	transform:translateY(-80px);
+	opacity:0;
 
 }
 
@@ -202,6 +206,7 @@ p,.project-description{
 	background-color: #282f38;
 	color:#FFF;
 	border-color:#282f38;
+
 }
 
 .btn-send-email{
@@ -406,7 +411,7 @@ z-index: 99;
 	
 	display:inline-block;
 	list-style-type: none;
-	padding:0 30px;
+	padding:0 50px;
 
 }
 
@@ -810,52 +815,52 @@ z-index: 99;
 
 .php-bgc{
 	
-	background-color: #6c7eb7;
+	background-color: #394B84;
 }
 
 .php-border{
 	
-	border-color: #6c7eb7;
+	border-color: #394B84;
 }
 
 .css3-bgc{
 
-	background-color: #006eb9;
+	background-color: #003B86;
 }
 
 .css3-border{
 
-	border-color: #006eb9;
+	border-color: #003B86;
 }
 
 .javascript-bgc{
 	
-	background-color: #fecc53;
+	background-color: #CB9920;
 }
 
 .javascript-border{
 	
-	border-color: #fecc53;
+	border-color: #CB9920;
 }
 
 .scss-bgc{
 	
-	background-color: #c6538c;
+	background-color: #932059;
 }
 
 .scss-border{
 	
-	border-color: #c6538c;
+	border-color: #932059;
 }
 
 .html5-bgc{
 	
-	background-color: #f16528;
+	background-color: #BE3200;
 }
 
 .html5-border{
 	
-	border-color: #f16528;
+	border-color: #BE3200;
 }
 
 
@@ -904,7 +909,7 @@ z-index: 99;
 
 .work{
 
-	background-color: #f5f5f5;
+	background-color: #DCDCDC;
 	padding:25px 0px;
 	overflow:hidden;
 }
@@ -916,6 +921,10 @@ z-index: 99;
 	
 }
 
+.project-thumbnail{
+
+	padding:0px !important;
+}
 .outer{
 
 	position: relative;
@@ -932,16 +941,41 @@ z-index: 99;
 	width:100%;
 	height:100%;
 	opacity:0;
-	transition: opacity 1s ease;
+	transition: opacity 0.1s ease-in;
 
 }
 
+
+.project-name{
+
+	position:absolute;
+	bottom:0;
+	width:100%;
+	text-align: center;
+	opacity:0;
+	color:#FFF;
+	transition:transform 0.4s ease;
+	transform:translateY(20px);
+	z-index: 3;
+}
 
 .outer:hover .overlay{
 
 	opacity:0.92;
+	background-color: #282f38;
 }
 
+.outer:hover .project-name{
+
+	transform:translateY(-20px);
+	opacity:1;
+}
+
+.outer:hover .btn-view-project{
+
+	transform:translateY(0px);
+	opacity:1;
+}
 
 .outer:hover .gallery-item{
 
@@ -1221,26 +1255,9 @@ span.input-group-addon{
 }
 
 
-.error-container{
 
-	min-height:48vh;
-	background-color: #282f38;
-	overflow: auto;
-}
 
-span.error-code{
 
-	font-size: 53px;
-	font-weight: 800;
-}
-
-.error-container h3{
-	
-	margin-top:180px;
-	color: #FFF;
-
-	
-}
 
 /* ----------------------------------------*/
 /* ---->>>ANIMATION,ERROR AND MISC <<<-----*/
@@ -1341,8 +1358,17 @@ span.error-code{
 }
 
 .jumbotron .hero-content h1{
-	margin-top:8vh;
+	margin-top:3vh;
 	font-weight:600;
+	font-size: 40px;
+	line-height: 43px;
+
+
+	.jumbotron p{
+
+		font-weight:400;
+		font-size: 14px;
+	}
 }
 	 
 .hex-wrapper:nth-child(4n+3){
@@ -1358,9 +1384,21 @@ span.error-code{
 	margin-left:72px;
 }
 
-.error-container{
+.home-social-links{
+	padding:0px;
+	bottom:0;
+	left:50px;
+	width:100%;
 
-	min-height:48vh;
+}
+
+
+.home-social-links li{
+
+	display:inline-block;
+	padding-right:10px;
+}
+
 
 }
 /* Custom, iPhone Retina */ 
@@ -1390,7 +1428,7 @@ span.error-code{
 
 	 #grid[data-columns]::before {
         
-        content: '1 .col-xs-12';
+        content: '1 .col-xs-12 .project-thumbnail';
 
     }
 
@@ -1429,7 +1467,7 @@ span.error-code{
 	}
 
 	#grid[data-columns]::before {
-        content: '2 .col-xs-6';
+        content: '2 .col-xs-6 .project-thumbnail';
     }
 
 
@@ -1473,7 +1511,7 @@ h2:before{
 
 
 #grid[data-columns]::before {
-    content: '2 .col-sm-6';
+    content: '2 .col-sm-6 .project-thumbnail';
 }
 
 
@@ -1483,9 +1521,7 @@ h2:before{
 	
 }
 
-.error-container{
 
-	min-height:68vh;
 		
 }
 
@@ -1495,7 +1531,7 @@ h2:before{
 
 
 	#grid[data-columns]::before {
-        content: '3 .col-md-4';
+        content: '3 .col-md-4 .project-thumbnail';
     }
 }
 

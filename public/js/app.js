@@ -100,21 +100,10 @@ const Validator=(function(e){
 
 /*
 *
-* Project module [ overlay, showProjectModal]
+* Project module [ showProjectModal]
 *
 */
 const Project=(function(){
-
-	const colorScheme=["#F94A4A","#1AF7DA","#F8F24D","#A677B8","#F79058"];
-	
-	//overlay project on hover
-	var overlay=function(elem){
-
-		var colorIndex =Math.floor((Math.random() * colorScheme.length) + 1);
-		$(elem).find(".overlay").css("background-color",colorScheme[colorIndex]);
-	
-		
-	}
 	
 	//show project modal on view button click 
 	var showProjectModal = function(elem){
@@ -122,7 +111,7 @@ const Project=(function(){
 
 		var projectId 				= 	$(elem).data('id');
 		const projectModal 			= 	$("#project-modal")
-		const projectModalTile 		= 	projectModal.find("#project-modal-title");
+		const projectModalTitle 		= 	projectModal.find("#project-modal-title");
 		const projectName 			= 	projectModal.find(".project-name");
 		const projectCategory 		= 	projectModal.find(".project-category");
 		const projectDescription 	= 	projectModal.find(".project-description");
@@ -143,6 +132,7 @@ const Project=(function(){
  				var imageUrl = data.project_image_url+"/project_full_screen.jpg";
  				var siteUrl = data.project_site_url;
 
+ 				projectModalTitle.html(name);
  				projectName.html(name);
  				projectCategory.html(category);
  				projectImage.attr("src",imageUrl);
@@ -164,9 +154,7 @@ const Project=(function(){
 
 	return {
 		
-		showProjectModal : showProjectModal,
-
-		overlay  : overlay
+		showProjectModal : showProjectModal
 		
 		};
 
