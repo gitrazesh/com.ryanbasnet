@@ -111,7 +111,7 @@ const Project=(function(){
 
 		var projectId 				= 	$(elem).data('id');
 		const projectModal 			= 	$("#project-modal")
-		const projectModalTitle 		= 	projectModal.find("#project-modal-title");
+		const projectModalTitle 	= 	projectModal.find("#project-modal-title");
 		const projectName 			= 	projectModal.find(".project-name");
 		const projectCategory 		= 	projectModal.find(".project-category");
 		const projectDescription 	= 	projectModal.find(".project-description");
